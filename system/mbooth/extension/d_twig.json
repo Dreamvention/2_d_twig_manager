@@ -1,0 +1,42 @@
+{
+	"codename": "d_twig",
+    "version": "1.0.0",
+    "name": "Twig library",
+    "description": "Twig library for Opencart stores",
+    "author": {
+        "name": "Dreamvention",
+        "email": "info@dreamvention.com",
+        "url": "https://dreamvention.com/"
+    },
+    "opencart_version": [
+        "2.2.0.0",
+        "2.3.0.2"
+    ],
+    "mbooth_version": "^4.0.0",
+    "type": "module",
+    "license": {
+        "type": "free",
+        "url": "https://shopunity.net/licenses/free"
+    },
+    "support": {
+        "email": "support@dreamvention.com",
+        "url": "https://dreamvention.com/support"
+    },
+    "required": {
+        "d_shopunity": ">= 3.0.0"
+    },
+    "files": [
+        "system/mbooth/extension/d_twig.json",
+        "system/library/template/twig.php",
+        "vqmod/xml/a_vqmod_d_twig.xml"
+    ],
+    "dirs": [
+        "system/library/template/Twig"
+    ],
+    "changelog": [
+        {
+            "version":"1.0.0",
+            "change": ""
+        }
+    ]
+}

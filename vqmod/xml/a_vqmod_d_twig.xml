@@ -1,0 +1,45 @@
+<modification>
+    <id>d_twig</id>
+    <version>1.0.0</version>
+    <vqmver>2.2.1</vqmver>
+    <author>dreamvention.com</author>
+
+    <file name="system/engine/loader.php">
+		    <operation error="skip" info="for OC 2.3.0.0">
+            <search position="replace"><![CDATA[$template = new Template($this->registry->get('config')->get('template_type'));]]></search>
+            <add><![CDATA[
+              //a_vqmod_d_twig
+              $template = new Template('twig');
+              $data['registry'] = $this->registry;
+              //#a_vqmod_d_twig
+            ]]></add>
+        </operation>
+        <operation error="skip" info="for OC 2.2.0.0">
+            <search position="replace"><![CDATA[$template = new Template('basic');]]></search>
+            <add><![CDATA[
+              //a_vqmod_d_twig
+              $template = new Template('twig');
+              $data['registry'] = $this->registry;
+              //#a_vqmod_d_twig
+            ]]></add>
+        </operation>
+        <operation error="skip" info="OC 2.2.0.0 and higher">
+            <search position="replace"><![CDATA[$output = $template->render($route . '.tpl');]]></search>
+            <add><![CDATA[
+              //a_vqmod_d_twig
+              $output = $template->render($route);
+              //#a_vqmod_d_twig
+            ]]></add>
+        </operation>
+    </file>
+    <file name="catalog/controller/event/theme.php">
+		    <operation error="skip" info="for OC 2.3.0.0">
+            <search position="replace"><![CDATA[if (is_file(DIR_TEMPLATE . $theme . '/template/' . $view . '.tpl')) {]]></search>
+            <add><![CDATA[
+              if (is_file(DIR_TEMPLATE . $theme . '/template/' . $view . '.twig')){
+          			$view = $theme . '/template/' . $view;
+          		} elseif (is_file(DIR_TEMPLATE . $theme . '/template/' . $view . '.tpl')) {
+            ]]></add>
+        </operation>
+    </file>
+</modification>
