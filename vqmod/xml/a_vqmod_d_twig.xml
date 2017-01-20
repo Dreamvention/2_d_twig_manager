@@ -5,7 +5,7 @@
     <author>dreamvention.com</author>
 
     <file name="system/engine/loader.php">
-		    <operation error="skip" info="for OC 2.3.0.0">
+	      <operation error="skip" info="for OC 2.3.0.0">
             <search position="replace"><![CDATA[$template = new Template($this->registry->get('config')->get('template_type'));]]></search>
             <add><![CDATA[
               //a_vqmod_d_twig
