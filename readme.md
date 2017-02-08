@@ -19,4 +19,5 @@ Now you can enjoy Twig template files.
 ##Support
 If you need support, please create an issue on Github and we will address it. Please keep it short and simple. Screenshots are most appreciated.
 
-Enjoy!  
+Enjoy! 
+The Dreamvention team.
