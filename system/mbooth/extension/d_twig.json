@@ -1,14 +1,23 @@
 {
-	"codename": "d_twig",
-    "version": "1.0.0",
-    "name": "Twig library",
-    "description": "Twig library for Opencart stores",
+    "codename": "d_twig",
+    "version": "1.29.0",
+    "name": "Twig Library",
+    "description": "Twig - templating engine",
+    "index": "module/d_twig",
+    "readme": "system/mbooth/readme/d_twig.md",
     "author": {
-        "name": "Dreamvention",
-        "email": "info@dreamvention.com",
-        "url": "https://dreamvention.com/"
+        "name": "Shopunity",
+        "email": "info@shopunity.com",
+        "url": "https://shopunity.net/"
     },
     "opencart_version": [
+        "2.0.0.0",
+        "2.0.1.1",
+        "2.0.1.1",
+        "2.0.2.0",
+        "2.0.3.1",
+        "2.1.0.1",
+        "2.1.0.2",
         "2.2.0.0",
         "2.3.0.2"
     ],
@@ -18,25 +27,28 @@
         "type": "free",
         "url": "https://shopunity.net/licenses/free"
     },
-    "support": {
-        "email": "support@dreamvention.com",
-        "url": "https://dreamvention.com/support"
+    "install": {
+        "url": "extension/module/install&extension=d_twig",
+        "xml": "system/mbooth/install/d_twig.xml"
     },
-    "required": {
-        "d_shopunity": ">= 3.0.0"
+    "uninstall": {
+        "url": "extension/module/uninstall&extension=d_twig"
+    },
+    "support": {
+        "email": "support@shopunity.com",
+        "url": "https://shopunity.net/"
     },
     "files": [
         "system/mbooth/extension/d_twig.json",
-        "system/library/template/twig.php",
-        "vqmod/xml/a_vqmod_d_twig.xml"
+        "system/library/template/twig.php"
     ],
-    "dirs": [
+    "dirs":[
         "system/library/template/Twig"
     ],
     "changelog": [
         {
-            "version":"1.0.0",
-            "change": ""
+            "varsion":"1.29.0",
+            "change": "First release"
         }
     ]
 }
