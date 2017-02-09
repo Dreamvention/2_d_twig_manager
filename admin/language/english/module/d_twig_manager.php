@@ -18,6 +18,7 @@ $_['text_history']              = 'Theme History';
 $_['text_twig']                 = 'The theme editor uses the template language Twig. You can read about <a href="http://twig.sensiolabs.org/documentation" target="_blank" class="alert-link">Twig syntax here</a>.';
 $_['text_yes']                  = 'Yes';
 $_['text_no']                   = 'No';
+$_['text_begin']                = 'Select a theme file from the left side to begin editing.';
 
 // Column
 $_['column_store']              = 'Store';

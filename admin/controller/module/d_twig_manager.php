@@ -51,7 +51,6 @@ class ControllerModuleDTwigManager extends Controller {
 		$this->load->model('module/d_twig_manager');
 		$this->model_d_shopunity_mbooth->validateDependencies($this->codename);
 
-		$this->load->language('design/theme');
 		$this->load->language('module/d_twig_manager');
 
 		// styles and scripts
@@ -59,6 +58,12 @@ class ControllerModuleDTwigManager extends Controller {
 
 		$this->document->addScript('view/javascript/shopunity/bootstrap-switch/bootstrap-switch.min.js');
 		$this->document->addStyle('view/stylesheet/shopunity/bootstrap-switch/bootstrap-switch.css');
+
+		$this->document->addScript('view/javascript/d_codemirror/lib/codemirror.js');
+		$this->document->addScript('view/javascript/d_codemirror/lib/xml.js');
+		$this->document->addScript('view/javascript/d_codemirror/lib/formatting.js');
+		$this->document->addStyle('view/javascript/d_codemirror/lib/codemirror.css');
+		$this->document->addStyle('view/javascript/d_codemirror/theme/monokai.css');
 
 		$this->document->setTitle($this->language->get('heading_title_main'));
 
@@ -146,7 +151,7 @@ class ControllerModuleDTwigManager extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('module/d_twig_manager', $data));
+		$this->response->setOutput($this->load->view('module/d_twig_manager.tpl', $data));
 	}
 	
 	public function history() {
@@ -209,7 +214,7 @@ class ControllerModuleDTwigManager extends Controller {
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($history_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($history_total - 10)) ? $history_total : ((($page - 1) * 10) + 10), $history_total, ceil($history_total / 10));
 
-		$this->response->setOutput($this->load->view('module/d_twig_manager/theme_history', $data));
+		$this->response->setOutput($this->load->view('module/d_twig_manager/theme_history.tpl', $data));
 	}
 		
 	public function path() {
@@ -223,13 +228,18 @@ class ControllerModuleDTwigManager extends Controller {
 			$store_id = 0;
 		}	
 		
-		$this->load->model('setting/setting');
+		$this->load->model('module/d_twig_manager');
 			
-		$theme = $this->model_setting_setting->getSettingValue('config_theme', $store_id);
-		
+			
+		$theme = $this->model_module_d_twig_manager->getSettingValue('config_theme', $store_id);
+
 		// This is only here for compatibility with old themes.
 		if ($theme == 'theme_default') {
-			$theme = $this->model_setting_setting->getSettingValue('theme_default_directory', $store_id);			
+			$theme = $this->model_module_d_twig_manager->getSettingValue('theme_default_directory', $store_id);			
+		}
+
+		if(!$theme){
+			$theme = $this->model_module_d_twig_manager->getSettingValue('config_template', $store_id);
 		}
 		
 		if (isset($this->request->get['path'])) {
@@ -291,13 +301,17 @@ class ControllerModuleDTwigManager extends Controller {
 			$store_id = 0;
 		}	
 		
-		$this->load->model('setting/setting');
+		$this->load->model('module/d_twig_manager');
 			
-		$theme = $this->model_setting_setting->getSettingValue('config_theme', $store_id);
+		$theme = $this->model_module_d_twig_manager->getSettingValue('config_theme', $store_id);
 		
 		// This is only here for compatibility with old themes.
 		if ($theme == 'theme_default') {
-			$theme = $this->model_setting_setting->getSettingValue('theme_default_directory', $store_id);			
+			$theme = $this->model_module_d_twig_manager->getSettingValue('theme_default_directory', $store_id);			
+		}
+
+		if(!$theme){
+			$theme = $this->model_module_d_twig_manager->getSettingValue('config_template', $store_id);
 		}
 		
 		if (isset($this->request->get['path'])) {
@@ -333,13 +347,17 @@ class ControllerModuleDTwigManager extends Controller {
 			$store_id = 0;
 		}	
 		
-		$this->load->model('setting/setting');
+		$this->load->model('module/d_twig_manager');
 			
-		$theme = $this->model_setting_setting->getSettingValue('config_theme', $store_id);
+		$theme = $this->model_module_d_twig_manager->getSettingValue('config_theme', $store_id);
 		
 		// This is only here for compatibility with old themes.
 		if ($theme == 'theme_default') {
-			$theme = $this->model_setting_setting->getSettingValue('theme_default_directory', $store_id);			
+			$theme = $this->model_module_d_twig_manager->getSettingValue('theme_default_directory', $store_id);			
+		}
+
+		if(!$theme){
+			$theme = $this->model_module_d_twig_manager->getSettingValue('config_template', $store_id);
 		}
 		
 		if (isset($this->request->get['path'])) {
@@ -382,13 +400,17 @@ class ControllerModuleDTwigManager extends Controller {
 			$store_id = 0;
 		}	
 		
-		$this->load->model('setting/setting');
+		$this->load->model('module/d_twig_manager');
 			
-		$theme = $this->model_setting_setting->getSettingValue('config_theme', $store_id);
+		$theme = $this->model_module_d_twig_manager->getSettingValue('config_theme', $store_id);
 		
 		// This is only here for compatibility with old themes.
 		if ($theme == 'theme_default') {
-			$theme = $this->model_setting_setting->getSettingValue('theme_default_directory', $store_id);			
+			$theme = $this->model_module_d_twig_manager->getSettingValue('theme_default_directory', $store_id);			
+		}
+
+		if(!$theme){
+			$theme = $this->model_module_d_twig_manager->getSettingValue('config_template', $store_id);
 		}
 				
 		if (isset($this->request->get['path'])) {

@@ -127,8 +127,6 @@
 	</div>
 </div>
 
- <link href="view/javascript/codemirror/lib/codemirror.css" rel="stylesheet" />
-  <link href="view/javascript/codemirror/theme/monokai.css" rel="stylesheet" />
   <style>
 .CodeMirror {
   border: 1px solid #eee;
@@ -139,9 +137,7 @@
   overflow-x: auto;
 }
 </style>
-  <script type="text/javascript" src="view/javascript/codemirror/lib/codemirror.js"></script> 
-  <script type="text/javascript" src="view/javascript/codemirror/lib/xml.js"></script> 
-  <script type="text/javascript" src="view/javascript/codemirror/lib/formatting.js"></script> 
+
   <script type="text/javascript"><!--
 
 $(function () {

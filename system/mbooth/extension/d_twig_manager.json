@@ -41,7 +41,8 @@
     "required": {
         "d_shopunity": ">=3.0.41",
         "d_event_manager": ">=1.0.0",
-        "d_twig": ">=1.29.0"
+        "d_twig": ">=1.29.0",
+        "d_codemirror": ">=5.13.3"
     },
     "files": [
         "system/mbooth/extension/d_twig_manager.json",
