@@ -78,7 +78,7 @@ class ControllerEventDTwigManager extends Controller {
 
 				if(VERSION <= '2.0.0.0'){
 					if (substr($view, -4) == 'twig') {
-						$view = substr($view, 0, -4);
+						$view = substr($view, 0, -5);
 					}
 				}
 
