@@ -3,7 +3,6 @@
     "version": "1.29.0",
     "name": "Twig Library",
     "description": "Twig - templating engine",
-    "index": "module/d_twig",
     "readme": "system/mbooth/readme/d_twig.md",
     "author": {
         "name": "Shopunity",
@@ -26,13 +25,6 @@
     "license": {
         "type": "free",
         "url": "https://shopunity.net/licenses/free"
-    },
-    "install": {
-        "url": "extension/module/install&extension=d_twig",
-        "xml": "system/mbooth/install/d_twig.xml"
-    },
-    "uninstall": {
-        "url": "extension/module/uninstall&extension=d_twig"
     },
     "support": {
         "email": "support@shopunity.com",
