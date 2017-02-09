@@ -68,7 +68,7 @@ class ControllerEventDTwigManager extends Controller {
 				$this->config->set('template_type', 'php');
 			}		
 		
-			if(VERSION > '2.0.0.0' || $this->config->get('template_type') == 'twig'){
+			if(VERSION > '2.0.1.1' || $this->config->get('template_type') == 'twig'){
 
 				$template = new Template($this->config->get('template_type'));
 
@@ -76,7 +76,7 @@ class ControllerEventDTwigManager extends Controller {
 					$template->set($key, $value);
 				}
 
-				if(VERSION <= '2.0.0.0'){
+				if(VERSION <= '2.0.1.1'){
 					if (substr($view, -4) == 'twig') {
 						$view = substr($view, 0, -5);
 					}
@@ -87,18 +87,19 @@ class ControllerEventDTwigManager extends Controller {
 		}
 
 		if(!$output){
-			
-			$output = 'do_not_render_empty_tpl';
-			
+			if(VERSION > '2.0.1.1'){
+				$output = 'do_not_render_empty_tpl';
+			}
 		}else{
 
-			//Trigger the post events
-			//$result = $this->registry->get('event')->trigger('view/' . $route . '/after', array(&$route, &$data, &$output));
-			
-			// if ($result) {
-			// 	return $result;
-			// }
-
+			if(VERSION > '2.0.1.1'){
+				//Trigger the post events
+				$result = $this->registry->get('event')->trigger('view/' . $route . '/after', array(&$route, &$data, &$output));
+				
+				if ($result) {
+					return $result;
+				}
+			}
 			return $output;
 		}
 	
@@ -108,6 +109,7 @@ class ControllerEventDTwigManager extends Controller {
 	}
 
 	public function view_after(&$route, &$data, &$output){
+
 		//required to avoid the return empty bug. 
 		if($output == 'do_not_render_empty_tpl'){
 			$output = '';
