@@ -8,7 +8,7 @@ class ControllerEventDTwigManager extends Controller {
 		if(isset($parts['1'])){
 			$view = $parts['1'];
 		}
-		
+
 		if (substr($view, -3) == 'tpl') {
 			$view = substr($view, 0, -3);
 		}
@@ -66,9 +66,13 @@ class ControllerEventDTwigManager extends Controller {
 				$view = 'default/template/' . $view. '.tpl';
 				
 				$this->config->set('template_type', 'php');
-			}		
+			}
+
+			if($this->config->get('template_type') == 'php' && VERSION >= '2.2.0.0' && VERSION < '2.3.0.0' ){
+				$this->config->set('template_type', 'basic');
+			}
 		
-			if(VERSION > '2.3.0.0' || $this->config->get('template_type') == 'twig'){
+			if(VERSION >= '2.2.0.0' || $this->config->get('template_type') == 'twig'){
 
 				$template = new Template($this->config->get('template_type'));
 
@@ -76,7 +80,7 @@ class ControllerEventDTwigManager extends Controller {
 					$template->set($key, $value);
 				}
 
-				if(VERSION <= '2.3.0.0'){
+				if(VERSION <= '2.2.0.0'){
 					if (substr($view, -4) == 'twig') {
 						$view = substr($view, 0, -5);
 					}
@@ -87,12 +91,12 @@ class ControllerEventDTwigManager extends Controller {
 		}
 
 		if(!$output){
-			if(VERSION > '2.3.0.0'){
+			if(VERSION >= '2.2.0.0'){
 				$output = 'do_not_render_empty_tpl';
 			}
 		}else{
 
-			if(VERSION > '2.3.0.0'){
+			if(VERSION >= '2.2.0.0'){
 				//Trigger the post events
 				$result = $this->registry->get('event')->trigger('view/' . $route . '/after', array(&$route, &$data, &$output));
 				
