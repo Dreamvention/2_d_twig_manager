@@ -80,11 +80,11 @@ class ControllerEventDTwigManager extends Controller {
 					$template->set($key, $value);
 				}
 
-				if(VERSION <= '2.2.0.0'){
-					if (substr($view, -4) == 'twig') {
-						$view = substr($view, 0, -5);
-					}
+			
+				if (substr($view, -4) == 'twig') {
+					$view = substr($view, 0, -5);
 				}
+			
 
 				$output = $template->render($view);
 			}
