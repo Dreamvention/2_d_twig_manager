@@ -487,9 +487,6 @@ class ControllerModuleDTwigManager extends Controller {
 
 
 	public function install() {
-		if(!$this->validate()){
-			return false;
-		}
 
 		$this->load->model('module/d_twig_manager');
 		$this->model_module_d_twig_manager->installDatabase();
