@@ -1,6 +1,6 @@
 {
     "codename": "d_twig_manager",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "name": "Twig Manager",
     "description": "Add twig support to you opencart and manage your twig template files",
     "index": "module/d_twig_manager",
@@ -55,9 +55,15 @@
         "admin/view/template/module/d_twig_manager/theme_history.tpl",
 
         "catalog/controller/event/d_twig_manager.php",
-        "catalog/model/module/d_twig_manager.php"
+        "catalog/model/module/d_twig_manager.php",
+        
+        "system/library/template/Twig/Extension/DTwigManager.php"
     ],
     "changelog": [
+        {
+            "varsion":"1.1.0",
+            "change": "1. Add partial support and debug. \r\n 2. Fix event bug that blocked other events"
+        },
         {
             "varsion":"1.0.0",
             "change": "First release"
