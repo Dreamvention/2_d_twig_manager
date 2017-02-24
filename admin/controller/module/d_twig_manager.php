@@ -115,6 +115,7 @@ class ControllerModuleDTwigManager extends Controller {
 
 		$data['entry_compatibility'] = $this->language->get('entry_compatibility');
 		$data['help_compatibility'] = $this->language->get('help_compatibility');
+		$data['help_event_support'] = $this->language->get('help_event_support');
 
 		$data['button_cancel'] = $this->language->get('button_cancel');
 		$data['button_save'] = $this->language->get('button_save');
@@ -143,10 +144,16 @@ class ControllerModuleDTwigManager extends Controller {
 				'name'     => $result['name']
 			);
 		}
-		
-		$this->load->model('module/d_event_manager');
-		$data['compatibility'] = $this->model_module_d_event_manager->getEvents(array('filter_code' => $this->codename));
+		$event_support =  (file_exists(DIR_SYSTEM.'mbooth/extension/d_event_manager.json'));
+		$data['event_support'] = false;
+		$data['compatibility'] = false;
+		if($event_support){
+			$this->load->model('module/d_event_manager');
+			$data['event_support'] = VERSION >= '2.3.0.0' || $this->model_module_d_event_manager->getEvents(array('filter_code' => 'd_event_manager'));
+			$data['compatibility'] = $this->model_module_d_event_manager->getEvents(array('filter_code' => $this->codename));
 
+		}
+		
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
@@ -488,12 +495,13 @@ class ControllerModuleDTwigManager extends Controller {
 
 	public function install() {
 
-		$this->load->model('module/d_twig_manager');
-		$this->model_module_d_twig_manager->installDatabase();
-
 		if($this->d_shopunity){
 			$this->load->model('d_shopunity/mbooth');
 			$this->model_d_shopunity_mbooth->installDependencies($this->codename);  
+
+			$this->load->model('module/d_twig_manager');
+			$this->model_module_d_twig_manager->installDatabase();
+
 		}
 	}
 
@@ -502,8 +510,10 @@ class ControllerModuleDTwigManager extends Controller {
 			return false;
 		}
 		
-		$this->load->model('module/d_event_manager');
-		$this->model_module_d_event_manager->deleteEvent($this->codename);
+		if($this->d_shopunity){
+			$this->load->model('module/d_event_manager');
+			$this->model_module_d_event_manager->deleteEvent($this->codename);
+		}
 	}
 
 	private function validate($permission = 'modify') {

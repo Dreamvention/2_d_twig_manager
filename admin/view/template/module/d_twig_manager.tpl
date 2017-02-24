@@ -37,7 +37,7 @@
 			</div>
 			<div class="panel-body">
 				
-					 <ul class="nav nav-tabs">
+					<ul class="nav nav-tabs">
 						<li class="active"><a href="#tab_event" data-toggle="tab">
 							<span class="fa fa-pencil"></span> 
 							<?php echo $tab_editor; ?>
@@ -104,10 +104,13 @@
 								<?php if(VERSION < '3.0.0.0') { ?>
 								<div class="form-group">
 									<label class="col-sm-2 control-label" for="input_compatibility"><?php echo $entry_compatibility; ?></label>
-									<div class="col-sm-10">										
+									<div class="col-sm-10">
 										<input type="hidden" name="compatibility" value="0" />
+										<?php if(!$event_support) {?>
+											<div class="alert alert-danger"><?php echo $help_event_support ?> </div>
+										<?php }else{ ?>
 										<input type="checkbox" name="compatibility" class="switcher" data-label-text="<?php echo $text_enabled; ?>"id="input_compatibility" <?php echo ($compatibility) ? 'checked="checked"':'';?> value="1" />
-										
+										<?php } ?>
 										<div class="bs-callout bs-callout-info m-t"><?php echo $help_compatibility; ?></div>
 									</div>
 
