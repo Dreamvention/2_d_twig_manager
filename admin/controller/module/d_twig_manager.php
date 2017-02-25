@@ -497,12 +497,12 @@ class ControllerModuleDTwigManager extends Controller {
 
         // $this->load->model('module/d_event_manager');
         // $this->model_module_d_event_manager->deleteEvent($this->codename);
-        // $this->response->redirect($this->url->link($this->route, 'token='.$this->session->data['token'], 'SSL'));
-        
+
         $this->load->model('d_shopunity/ocmod');
         $this->model_d_shopunity_ocmod->setOcmod('d_twig_manager.xml', 0);
         $this->model_d_shopunity_ocmod->refreshCache();
-        
+
+        $this->response->redirect($this->url->link($this->route, 'token='.$this->session->data['token'], 'SSL'));
     }
 
 
