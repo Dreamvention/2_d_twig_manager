@@ -158,6 +158,7 @@ class ControllerModuleDTwigManager extends Controller {
         // }
 
         $data['event_support'] = true; //turned off for now.
+        $this->load->model('d_shopunity/ocmod');
         $data['compatibility'] = $this->model_d_shopunity_ocmod->getModificationByName('d_twig_manager');
         
         $data['header'] = $this->load->controller('common/header');
