@@ -48,6 +48,7 @@
         "system/mbooth/install/d_twig_manager.xml",
 
         "admin/controller/module/d_twig_manager.php",
+        "admin/controller/event/d_twig_manager.php",
         "admin/model/module/d_twig_manager.php",
         "admin/language/english/module/d_twig_manager.php",
         "admin/language/en-gb/module/d_twig_manager.php",
