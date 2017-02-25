@@ -3,6 +3,8 @@ class ControllerEventDTwigManager extends Controller {
 
     //this is added via OCMOD to avoid event sorting order conflict. added by system/mbooth/install/d_twig_manager.xml
     public function support($input){
+
+                
         $output = false;
         $route = $input['route'];
         $data = $input['data'];
@@ -13,11 +15,11 @@ class ControllerEventDTwigManager extends Controller {
         }
 
         if (substr($view, -3) == 'tpl') {
-            $view = substr($view, 0, -3);
+            $view = substr($view, 0, -4);
         }
 
         if (substr($view, -4) == 'twig') {
-            $view = substr($view, 0, -4);
+            $view = substr($view, 0, -5);
         }
 
         // If the default theme is selected we need to know which directory its pointing to         
@@ -65,7 +67,6 @@ class ControllerEventDTwigManager extends Controller {
                 $view = 'default/template/' . $view. '.twig';
                 $render = true;
             }
-
             if($render){
                 // include and register Twig auto-loader
                 include_once DIR_SYSTEM . 'library/template/Twig/Autoloader.php';
