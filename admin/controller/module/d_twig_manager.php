@@ -154,9 +154,7 @@ class ControllerModuleDTwigManager extends Controller {
         //     $data['event_support'] = VERSION >= '2.3.0.0' || $this->model_d_shopunity_ocmod->getModificationByName('d_event_manager');
         //     $this->load->model('module/d_event_manager');
         //     $data['compatibility'] = $this->model_module_d_event_manager->getEvents(array('filter_code' => $this->codename));
-        
         // }
-
         $data['event_support'] = true; //turned off for now.
         $this->load->model('d_shopunity/ocmod');
         $data['compatibility'] = $this->model_d_shopunity_ocmod->getModificationByName('d_twig_manager');
