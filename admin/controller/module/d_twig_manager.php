@@ -144,14 +144,14 @@ class ControllerModuleDTwigManager extends Controller {
 				'name'     => $result['name']
 			);
 		}
-		$event_support =  (file_exists(DIR_SYSTEM.'mbooth/extension/d_event_manager.json'));
-		$data['event_support'] = false;
+		//$event_support =  (file_exists(DIR_SYSTEM.'mbooth/extension/d_event_manager.json'));
+		$data['event_support'] = true;
 		$data['compatibility'] = false;
 		if($event_support){
-			$this->load->model('module/d_event_manager');
 			$this->load->model('d_shopunity/ocmod');
-			$data['event_support'] = VERSION >= '2.3.0.0' || $this->model_d_shopunity_ocmod->getModificationByName('d_event_manager');
-			$data['compatibility'] = $this->model_module_d_event_manager->getEvents(array('filter_code' => $this->codename));
+			//$data['event_support'] = VERSION >= '2.3.0.0' || $this->model_d_shopunity_ocmod->getModificationByName('d_event_manager');
+			//$this->load->model('module/d_event_manager');
+			$data['compatibility'] = $this->model_d_shopunity_ocmod->getModificationByName('d_twig_manager');
 
 		}
 		
@@ -470,10 +470,14 @@ class ControllerModuleDTwigManager extends Controller {
 			$this->response->redirect($this->url->link($this->route, 'token='.$this->session->data['token'], 'SSL'));
 		}
 
-		$this->load->model('module/d_event_manager');
-		$this->model_module_d_event_manager->deleteEvent($this->codename);
-		$this->model_module_d_event_manager->addEvent($this->codename, 'catalog/view/*/*/before', 'event/d_twig_manager/view_before');
-		$this->model_module_d_event_manager->addEvent($this->codename, 'catalog/view/*/*/after', 'event/d_twig_manager/view_after');
+		//$this->load->model('module/d_event_manager');
+		// $this->model_module_d_event_manager->deleteEvent($this->codename);
+		// $this->model_module_d_event_manager->addEvent($this->codename, 'catalog/view/*/*/before', 'event/d_twig_manager/view_before');
+		// $this->model_module_d_event_manager->addEvent($this->codename, 'catalog/view/*/*/after', 'event/d_twig_manager/view_after');
+
+		$this->load->model('d_shopunity/ocmod');
+		$this->model_d_shopunity_ocmod->setOcmod('d_twig_manager.xml', 1);
+		$this->model_d_shopunity_ocmod->refreshCache();
 
 		$this->session->data['success'] = $this->language->get('text_success');
 		$this->response->redirect($this->url->link($this->route, 'token='.$this->session->data['token'], 'SSL'));
@@ -487,9 +491,13 @@ class ControllerModuleDTwigManager extends Controller {
 			$this->response->redirect($this->url->link($this->route, 'token='.$this->session->data['token'], 'SSL'));
 		}
 
-		$this->load->model('module/d_event_manager');
-		$this->model_module_d_event_manager->deleteEvent($this->codename);
-		$this->response->redirect($this->url->link($this->route, 'token='.$this->session->data['token'], 'SSL'));
+		// $this->load->model('module/d_event_manager');
+		// $this->model_module_d_event_manager->deleteEvent($this->codename);
+		// $this->response->redirect($this->url->link($this->route, 'token='.$this->session->data['token'], 'SSL'));
+		
+		$this->load->model('d_shopunity/ocmod');
+		$this->model_d_shopunity_ocmod->setOcmod('d_twig_manager.xml', 0);
+		$this->model_d_shopunity_ocmod->refreshCache();
 		
 	}
 
@@ -511,10 +519,10 @@ class ControllerModuleDTwigManager extends Controller {
 			return false;
 		}
 		
-		if($this->d_shopunity){
-			$this->load->model('module/d_event_manager');
-			$this->model_module_d_event_manager->deleteEvent($this->codename);
-		}
+		// if($this->d_shopunity){
+		// 	$this->load->model('module/d_event_manager');
+		// 	$this->model_module_d_event_manager->deleteEvent($this->codename);
+		// }
 	}
 
 	private function validate($permission = 'modify') {

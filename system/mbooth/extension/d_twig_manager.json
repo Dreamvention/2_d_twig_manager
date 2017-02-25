@@ -1,6 +1,6 @@
 {
     "codename": "d_twig_manager",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "name": "Twig Manager",
     "description": "Add twig support to you opencart and manage your twig template files",
     "index": "module/d_twig_manager",
@@ -40,12 +40,12 @@
     },
     "required": {
         "d_shopunity": ">=3.0.41",
-        "d_event_manager": ">=1.0.0",
         "d_twig": ">=1.29.0",
         "d_codemirror": ">=5.13.3"
     },
     "files": [
         "system/mbooth/extension/d_twig_manager.json",
+        "system/mbooth/install/d_twig_manager.xml",
 
         "admin/controller/module/d_twig_manager.php",
         "admin/model/module/d_twig_manager.php",
@@ -60,6 +60,10 @@
         "system/library/template/Twig/Extension/DTwigManager.php"
     ],
     "changelog": [
+        {
+            "varsion":"1.2.0",
+            "change": "1. changed events for OCMOD implementation - less conflicts. \r\n 2. Removed d_event_manager from required."
+        },
         {
             "varsion":"1.1.0",
             "change": "1. Add partial support and debug. \r\n 2. Fix event bug that blocked other events"

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name>d_twig_manager</name>
+	<code>d_twig_manager</code>
+	<description>Adds support for twig templating engine</description>
+	<version>1.0.0</version>
+	<author>Dreamvention</author>
+	<link>http://dreamvention.com</link>
+	<file path="system/engine/loader.php">
+    	<operation error="skip" info="add event support for 2.1.0.0 and below">
+			<search><![CDATA[$file = DIR_TEMPLATE . $template;]]></search>
+			<add position="before"><![CDATA[
+			//d_twig_manager.xml 1
+			$output = $this->controller('event/d_twig_manager/support', array('route' => $template, 'data' => $data));
+			if($output){
+				return $output;
+			}
+			]]></add>
+		</operation>
+		<operation error="skip" info="add event support for 2.2.0.0 and above">
+			<search><![CDATA[$output = $template->render($route . '.tpl');]]></search>
+			<add position="replace"><![CDATA[
+			//d_twig.xml 2
+
+			$output = $this->controller('event/d_twig_manager/support', array('route' => $route, 'data' => $data));
+			if(!$output)
+			$output = $template->render($route . '.tpl');
+			]]></add>
+		</operation>
+	</file>
+</modification>
