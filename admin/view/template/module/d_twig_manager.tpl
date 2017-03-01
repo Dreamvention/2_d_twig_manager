@@ -47,12 +47,6 @@
 							<span class="fa fa-cog"></span> 
 							<?php echo $tab_setting; ?>
 						</a></li>
-						<!-- 
-						
-						<li><a href="#tab_instruction" data-toggle="tab">
-							<span class="fa fa-graduation-cap"></span> 
-							<?php echo $tab_instruction; ?>
-						</a></li>  -->
 					</ul>
 
 					<div class="tab-content">
@@ -99,8 +93,6 @@
 						</div>
 						<div class="tab-pane" id="tab_setting" >
 							<div class="tab-body">
-								<form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form" class="form-horizontal">
-								
 								<?php if(VERSION < '3.0.0.0') { ?>
 								<div class="form-group">
 									<label class="col-sm-2 control-label" for="input_compatibility"><?php echo $entry_compatibility; ?></label>
@@ -113,16 +105,9 @@
 										<?php } ?>
 										<div class="bs-callout bs-callout-info m-t"><?php echo $help_compatibility; ?></div>
 									</div>
-
-
 								</div><!-- //compatibility -->
 								<?php } ?>
-								
-								</form>
 							</div>
-						</div>
-						<div class="tab-pane" id="tab_instruction" >
-							<div class="tab-body"><?php echo $text_instruction; ?></div>
 						</div>
 					</div>
 				</div>

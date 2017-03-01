@@ -1,6 +1,6 @@
 {
     "codename": "d_twig_manager",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "name": "Twig Manager",
     "description": "Add twig support to you opencart and manage your twig template files",
     "index": "module/d_twig_manager",
@@ -61,6 +61,10 @@
         "system/library/template/Twig/Extension/DTwigManager.php"
     ],
     "changelog": [
+        {
+            "varsion":"1.2.2",
+            "change": "1. bug fixes."
+        },
         {
             "varsion":"1.2.1",
             "change": "1. fix missing tpl files."
