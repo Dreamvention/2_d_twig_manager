@@ -87,6 +87,9 @@ class ControllerEventDTwigManager extends Controller {
                 $template = $twig->loadTemplate($view);
                 $output = $template->render($data);
 
+                if(!$output){
+                    $output = '&nbsp;';
+                }
             }
         }
         
