@@ -88,7 +88,7 @@ class ControllerEventDTwigManager extends Controller {
                 $output = $template->render($data);
 
                 if(!$output){
-                    $output = '&nbsp;';
+                    return false;
                 }
             }
         }
