@@ -12,8 +12,6 @@
 /**
  * Twig_NodeVisitor_Escaper implements output escaping.
  *
- * @final
- *
  * @author Fabien Potencier <fabien@symfony.com>
  */
 class Twig_NodeVisitor_Escaper extends Twig_BaseNodeVisitor
@@ -36,7 +34,7 @@ class Twig_NodeVisitor_Escaper extends Twig_BaseNodeVisitor
     protected function doEnterNode(Twig_Node $node, Twig_Environment $env)
     {
         if ($node instanceof Twig_Node_Module) {
-            if ($env->hasExtension('Twig_Extension_Escaper') && $defaultStrategy = $env->getExtension('Twig_Extension_Escaper')->getDefaultStrategy($node->getTemplateName())) {
+            if ($env->hasExtension('escaper') && $defaultStrategy = $env->getExtension('escaper')->getDefaultStrategy($node->getAttribute('filename'))) {
                 $this->defaultStrategy = $defaultStrategy;
             }
             $this->safeVars = array();
@@ -92,7 +90,7 @@ class Twig_NodeVisitor_Escaper extends Twig_BaseNodeVisitor
 
         return new $class(
             $this->getEscaperFilter($type, $expression),
-            $node->getTemplateLine()
+            $node->getLine()
         );
     }
 
@@ -144,7 +142,7 @@ class Twig_NodeVisitor_Escaper extends Twig_BaseNodeVisitor
 
     protected function getEscaperFilter($type, Twig_NodeInterface $node)
     {
-        $line = $node->getTemplateLine();
+        $line = $node->getLine();
         $name = new Twig_Node_Expression_Constant('escape', $line);
         $args = new Twig_Node(array(new Twig_Node_Expression_Constant((string) $type, $line), new Twig_Node_Expression_Constant(null, $line), new Twig_Node_Expression_Constant(true, $line)));
 

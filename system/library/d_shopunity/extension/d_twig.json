@@ -1,6 +1,6 @@
 {
     "codename": "d_twig",
-    "version": "1.29.0",
+    "version": "1.29.1",
     "name": "Twig Library",
     "description": "Twig - templating engine",
     "readme": "system/mbooth/readme/d_twig.md",
@@ -11,17 +11,18 @@
     },
     "opencart_version": [
         "2.0.0.0",
-        "2.0.1.1",
+        "2.0.1.0",
         "2.0.1.1",
         "2.0.2.0",
         "2.0.3.1",
         "2.1.0.1",
         "2.1.0.2",
         "2.2.0.0",
+        "2.3.0.0",
+        "2.3.0.1",
         "2.3.0.2"
     ],
-    "mbooth_version": "^4.0.0",
-    "type": "module",
+    "type": "library",
     "license": {
         "type": "free",
         "url": "https://shopunity.net/licenses/free"
@@ -31,13 +32,17 @@
         "url": "https://shopunity.net/"
     },
     "files": [
-        "system/mbooth/extension/d_twig.json",
+        "system/library/d_shopunity/extension/d_twig.json",
         "system/library/template/twig.php"
     ],
     "dirs":[
         "system/library/template/Twig"
     ],
     "changelog": [
+        {
+            "varsion":"1.29.1",
+            "change": "New structure"
+        },
         {
             "varsion":"1.29.0",
             "change": "First release"

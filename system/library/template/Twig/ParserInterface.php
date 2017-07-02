@@ -21,7 +21,9 @@ interface Twig_ParserInterface
     /**
      * Converts a token stream to a node tree.
      *
-     * @return Twig_Node_Module
+     * @param Twig_TokenStream $stream A token stream instance
+     *
+     * @return Twig_Node_Module A node tree
      *
      * @throws Twig_Error_Syntax When the token stream is syntactically or semantically wrong
      */

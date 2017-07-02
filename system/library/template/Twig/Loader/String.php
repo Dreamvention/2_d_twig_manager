@@ -27,24 +27,14 @@
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
-class Twig_Loader_String implements Twig_LoaderInterface, Twig_ExistsLoaderInterface, Twig_SourceContextLoaderInterface
+class Twig_Loader_String implements Twig_LoaderInterface, Twig_ExistsLoaderInterface
 {
     /**
      * {@inheritdoc}
      */
     public function getSource($name)
     {
-        @trigger_error(sprintf('Calling "getSource" on "%s" is deprecated since 1.27. Use getSourceContext() instead.', get_class($this)), E_USER_DEPRECATED);
-
         return $name;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSourceContext($name)
-    {
-        return new Twig_Source($name, $name);
     }
 
     /**

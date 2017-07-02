@@ -37,9 +37,9 @@ class Twig_Node_Import extends Twig_Node
                 ->raw('$this->loadTemplate(')
                 ->subcompile($this->getNode('expr'))
                 ->raw(', ')
-                ->repr($this->getTemplateName())
+                ->repr($compiler->getFilename())
                 ->raw(', ')
-                ->repr($this->getTemplateLine())
+                ->repr($this->getLine())
                 ->raw(')')
             ;
         }

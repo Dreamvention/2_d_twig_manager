@@ -11,8 +11,6 @@
 
 /**
  * @author Fabien Potencier <fabien@symfony.com>
- *
- * @final
  */
 class Twig_Profiler_Profile implements IteratorAggregate, Serializable
 {
