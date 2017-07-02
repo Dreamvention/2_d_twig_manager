@@ -3,7 +3,7 @@
  *  location: admin/model
  */
 
-class ModelModuleDTwigManager extends Model {
+class ModelExtensionModuleDTwigManager extends Model {
 
     /**
 
@@ -78,7 +78,7 @@ class ModelModuleDTwigManager extends Model {
 
     public function installCompatibility(){
 
-        $d_opencart_patch = (file_exists(DIR_SYSTEM.'mbooth/extension/d_opencart_patch.json'));
+        $d_opencart_patch = (file_exists(DIR_SYSTEM.'library/d_shopunity/extension/d_opencart_patch.json'));
         if(!$d_opencart_patch){
             return false;
         }
@@ -97,7 +97,7 @@ class ModelModuleDTwigManager extends Model {
 
     public function uninstallCompatibility(){
 
-        $d_opencart_patch = (file_exists(DIR_SYSTEM.'mbooth/extension/d_opencart_patch.json'));
+        $d_opencart_patch = (file_exists(DIR_SYSTEM.'library/d_shopunity/extension/d_opencart_patch.json'));
         if(!$d_opencart_patch){
             return false;
         }
