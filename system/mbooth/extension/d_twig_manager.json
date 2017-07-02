@@ -57,6 +57,7 @@
         "admin/controller/extension/module/d_twig_manager.php",
         "admin/model/extension/module/d_twig_manager.php",
         "admin/language/english/module/d_twig_manager.php",
+        "admin/language/english/extension/module/d_twig_manager.php",
         "admin/language/en-gb/extension/module/d_twig_manager.php",
         "admin/view/template/extension/module/d_twig_manager.tpl",
         "admin/view/template/extension/module/d_twig_manager/theme_history.tpl",
