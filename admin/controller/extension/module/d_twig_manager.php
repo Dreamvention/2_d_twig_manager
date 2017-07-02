@@ -581,7 +581,7 @@ class ControllerExtensionModuleDTwigManager extends Controller {
         // If there is a theme override we should get it                
         $this->load->model('extension/module/d_twig_manager');
 
-        $theme_info = $this->model_extension_module_d_twig_manager->getTheme($store_id, $theme,  $view);
+        $theme_info = $this->model_extension_module_d_twig_manager->getTheme($store_id, $theme, $view);
 
         if ($theme_info) {
             // include and register Twig auto-loader
