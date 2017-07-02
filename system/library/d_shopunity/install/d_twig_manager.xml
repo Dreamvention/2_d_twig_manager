@@ -11,7 +11,7 @@
             <search><![CDATA[$file = DIR_TEMPLATE . $template;]]></search>
             <add position="before"><![CDATA[
             //d_twig_manager.xml 1
-            $output = $this->controller('event/d_twig_manager/support', array('route' => $template, 'data' => $data));
+            $output = $this->controller('extension/module/d_twig_manager/support', array('route' => $template, 'data' => $data));
             if($output){
                 return $output;
             }
@@ -22,7 +22,7 @@
             <add position="before"><![CDATA[
             //d_twig.xml 2
 
-            $output = $this->controller('event/d_twig_manager/support', array('route' => $route, 'data' => $data));
+            $output = $this->controller('extension/module/d_twig_manager/support', array('route' => $route, 'data' => $data));
             if(!$output && file_exists( DIR_TEMPLATE . $route . '.tpl'))
             ]]></add>
         </operation>

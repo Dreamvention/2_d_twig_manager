@@ -1,8 +1,13 @@
 <?php
-class ControllerEventDTwigManager extends Controller {
-
-    //this is added via OCMOD to avoid event sorting order conflict. added by system/mbooth/install/d_twig_manager.xml
-    public function support($input){
-    	//only to avoid error with ocmod inclusion. does nothing.
-	}
+/*  DEPRECATED!!! DO NOT USE!!!
+*   Please refresh your twig compatibility
+*   location: catalog/controller
+*/
+require_once(DIR_APPLICATION.'controller/extension/module/d_twig_manager.php');
+class ControllerEventDTwigManager extends ControllerExtensionModuleDTwigManager
+{   
+    public function __construct($registry)
+    {
+        parent::__construct($registry);
+    }
 }

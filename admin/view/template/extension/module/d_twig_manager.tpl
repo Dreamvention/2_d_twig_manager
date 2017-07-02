@@ -133,6 +133,7 @@ $(function () {
 	//checkbox
 	$(".switcher[type='checkbox']").bootstrapSwitch({
 		'onColor': 'success',
+        'labelWidth': '50',
 		'onText': '<?php echo $text_yes; ?>',
 		'offText': '<?php echo $text_no; ?>',
 		onSwitchChange: function(event, state){
@@ -234,11 +235,11 @@ $('#path').on('click', 'a.file',function(e) {
 	var pos = $(node).attr('href').lastIndexOf('.');
 
 	if (pos != -1) {
-		var tab_id = $('select[name="store_id"]').val() + '-' + $(node).attr('href').slice(0, pos).replace('/', '-').replace('_', '-');
+		var tab_id = $('select[name="store_id"]').val() + '-' + $(node).attr('href').slice(0, pos).replace(/\//g, '-').replace(/_/g, '-');
 	} else {
-		var tab_id = $('select[name="store_id"]').val() + '-' + $(node).attr('href').replace('/', '-').replace('_', '-');
+		var tab_id = $('select[name="store_id"]').val() + '-' + $(node).attr('href').replace(/\//g, '-').replace(/_/g, '-');
 	}
-	
+
 	if (!$('#tab-' + tab_id).length) {
 		$.ajax({
 			url: 'index.php?route=<?php echo $route; ?>/template&token=<?php echo $token; ?>&store_id=' + $('select[name="store_id"]').val() + '&path=' + $(node).attr('href'),
@@ -405,7 +406,7 @@ $('#history').on('click', '.btn-primary', function(e) {
 
 	if (!$('#tab-' + tab_id).length) {
 		$.ajax({
-			url: 'index.php?route=module/d_twig_manager/template&token=<?php echo $token; ?>&store_id=' + $(node).parent().parent().find('input[name="store_id"]').val() + '&path=' + $(node).parent().parent().find('input[name="path"]').val(),
+			url: 'index.php?route=extension/module/d_twig_manager/template&token=<?php echo $token; ?>&store_id=' + $(node).parent().parent().find('input[name="store_id"]').val() + '&path=' + $(node).parent().parent().find('input[name="path"]').val(),
 			dataType: 'json',
 			beforeSend: function() {
 				$(node).button('loading');
