@@ -3,7 +3,7 @@
     "version": "1.29.1",
     "name": "Twig Library",
     "description": "Twig - templating engine",
-    "readme": "system/mbooth/readme/d_twig.md",
+    "readme": "system/library/d_shopunity/readme/d_twig.md",
     "author": {
         "name": "Shopunity",
         "email": "info@shopunity.com",
@@ -33,6 +33,7 @@
     },
     "files": [
         "system/library/d_shopunity/extension/d_twig.json",
+        "system/library/d_shopunity/readme/d_twig.md",
         "system/library/template/twig.php"
     ],
     "dirs":[
