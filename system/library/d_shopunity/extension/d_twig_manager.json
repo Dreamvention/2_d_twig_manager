@@ -3,7 +3,7 @@
     "version": "1.4.0",
     "name": "Twig Manager",
     "description": "Add twig support to you opencart and manage your twig template files",
-    "index": "module/d_twig_manager",
+    "index": "extension/module/d_twig_manager",
     "readme": "system/mbooth/readme/d_twig_manager.md",
     "author": {
         "name": "Shopunity",
