@@ -1,6 +1,6 @@
 {
     "codename": "d_twig_manager",
-    "version": "1.4.0",
+    "version": "1.4.1",
     "name": "Twig Manager",
     "description": "Add twig support to you opencart and manage your twig template files",
     "index": "extension/module/d_twig_manager",
@@ -70,6 +70,11 @@
         "system/library/template/Twig/Extension/DTwigManager.php"
     ],
     "changelog": [
+        {
+            "varsion":"1.4.1",
+            "change": "1. Bug fix."
+        },
+
         {
             "varsion":"1.4.0",
             "change": "1. Support new shopunity structure."
