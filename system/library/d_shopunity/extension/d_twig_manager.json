@@ -14,7 +14,7 @@
         "3.0.1.2",
         "3.0.2.0"
     ],
-    "type": "module",
+    "type": "library",
     "license": {
         "type": "free",
         "url": "https://shopunity.net/licenses/free"
@@ -24,7 +24,7 @@
         "xml": "system/library/d_shopunity/install/d_twig_manager.xml"
     },
     "uninstall": {
-        "url": "extension/d_shopunity/extension/uninstall_ocmod&codename=d_twig_manager",
+        "url": "extension/d_shopunity/extension/uninstall_ocmod&codename=d_twig_manager"
     },
     "support": {
         "email": "support@shopunity.com",
