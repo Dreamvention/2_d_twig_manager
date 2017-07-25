@@ -41,7 +41,7 @@ class ControllerExtensionModuleDTwigManager extends Controller {
     public function index() {
 
         if(!$this->d_shopunity){
-            $this->response->redirect($this->url->link($this->route.'/required', 'codename='.$this->codename.'y&token='.$this->session->data['token'], 'SSL'));
+            $this->response->redirect($this->url->link($this->route.'/required', 'codename='.$this->codename.'y&user_token='.$this->session->data['user_token'], 'SSL'));
         }
 
         $this->load->model('extension/d_shopunity/mbooth');
@@ -68,23 +68,23 @@ class ControllerExtensionModuleDTwigManager extends Controller {
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('text_home'),
-            'href' => $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true)
+            'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
         );
 
         $data['breadcrumbs'][] = array(
             'text'      => $this->language->get('text_module'),
-            'href'      => $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL')
+            'href'      => $this->url->link('extension/module', 'user_token=' . $this->session->data['user_token'], 'SSL')
         );
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title_main'),
-            'href' => $this->url->link('design/theme', 'token=' . $this->session->data['token'], true)
+            'href' => $this->url->link('design/theme', 'user_token=' . $this->session->data['user_token'], true)
         );
 
         $data['id'] = $this->codename;
         $data['route'] = $this->route;
         $data['version'] = $this->extension['version'];
-        $data['token'] =  $this->session->data['token'];
+        $data['user_token'] =  $this->session->data['user_token'];
         $data['d_shopunity'] = $this->d_shopunity;
 
         $data['heading_title'] = $this->language->get('heading_title_main');
@@ -117,16 +117,16 @@ class ControllerExtensionModuleDTwigManager extends Controller {
         $data['button_cancel'] = $this->language->get('button_cancel');
         $data['button_save'] = $this->language->get('button_save');
         $data['button_reset'] = $this->language->get('button_reset');
-        $data['install_compatibility'] = $this->model_extension_module_d_twig_manager->ajax($this->route.'/install_compatibility', 'token=' . $this->session->data['token'], 'SSL');
-        $data['uninstall_compatibility'] = $this->model_extension_module_d_twig_manager->ajax($this->route.'/uninstall_compatibility', 'token=' . $this->session->data['token'], 'SSL');
+        $data['install_compatibility'] = $this->model_extension_module_d_twig_manager->ajax($this->route.'/install_compatibility', 'user_token=' . $this->session->data['user_token'], 'SSL');
+        $data['uninstall_compatibility'] = $this->model_extension_module_d_twig_manager->ajax($this->route.'/uninstall_compatibility', 'user_token=' . $this->session->data['user_token'], 'SSL');
         
 
-        $data['token'] = $this->session->data['token'];
+        $data['user_token'] = $this->session->data['user_token'];
         
         if(VERSION >= '2.3.0.0'){    
-            $data['cancel'] = $this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=module', true);
+            $data['cancel'] = $this->url->link('extension/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true);
         }else{
-            $data['cancel'] = $this->url->link('extension/module', 'token=' . $this->session->data['token'], 'SSL');
+            $data['cancel'] = $this->url->link('extension/module', 'user_token=' . $this->session->data['user_token'], 'SSL');
         }
 
         $data['stores'] = array();
@@ -142,16 +142,6 @@ class ControllerExtensionModuleDTwigManager extends Controller {
             );
         }
     
-
-        // $event_support =  (file_exists(DIR_SYSTEM.'mbooth/extension/d_event_manager.json'));
-        // $data['event_support'] = true;
-        // $data['compatibility'] = false;
-        // if($event_support){
-        //     $this->load->model('d_shopunity/ocmod');
-        //     $data['event_support'] = VERSION >= '2.3.0.0' || $this->model_d_shopunity_ocmod->getModificationByName('d_event_manager');
-        //     $this->load->model('module/d_event_manager');
-        //     $data['compatibility'] = $this->model_module_d_event_manager->getEvents(array('filter_code' => $this->codename));
-        // }
         $data['event_support'] = true; //turned off for now.
         $this->load->model('extension/d_opencart_patch/modification');
         $data['compatibility'] = $this->model_extension_d_opencart_patch_modification->getModificationByName('d_twig_manager');
@@ -208,8 +198,8 @@ class ControllerExtensionModuleDTwigManager extends Controller {
                 'route'      => $result['route'],
                 'theme'      => $result['theme'],
                 'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-                'edit'       => $this->url->link($this->route.'/template', 'token=' . $this->session->data['token'], true),
-                'delete'     => $this->url->link($this->route.'/delete', 'token=' . $this->session->data['token'] . '&theme_id=' . $result['theme_id'], true)
+                'edit'       => $this->url->link($this->route.'/template', 'user_token=' . $this->session->data['user_token'], true),
+                'delete'     => $this->url->link($this->route.'/delete', 'user_token=' . $this->session->data['user_token'] . '&theme_id=' . $result['theme_id'], true)
             );            
         }
 
@@ -217,7 +207,7 @@ class ControllerExtensionModuleDTwigManager extends Controller {
         $pagination->total = $history_total;
         $pagination->page = $page;
         $pagination->limit = 10;
-        $pagination->url = $this->url->link($this->route.'/history', 'token=' . $this->session->data['token'] . '&page={page}', true);
+        $pagination->url = $this->url->link($this->route.'/history', 'user_token=' . $this->session->data['user_token'] . '&page={page}', true);
 
         $data['pagination'] = $pagination->render();
 
@@ -468,7 +458,7 @@ class ControllerExtensionModuleDTwigManager extends Controller {
 
         if(!$this->validate()){
             $this->session->data['error'] = $this->language->get('error_permission');
-            $this->response->redirect($this->url->link($this->route, 'token='.$this->session->data['token'], 'SSL'));
+            $this->response->redirect($this->url->link($this->route, 'user_token='.$this->session->data['user_token'], 'SSL'));
         }
 
         //$this->load->model('module/d_event_manager');
@@ -480,7 +470,7 @@ class ControllerExtensionModuleDTwigManager extends Controller {
         $this->model_extension_module_d_twig_manager->installCompatibility();
 
         $this->session->data['success'] = $this->language->get('text_success');
-        $this->response->redirect($this->url->link($this->route, 'token='.$this->session->data['token'], 'SSL'));
+        $this->response->redirect($this->url->link($this->route, 'user_token='.$this->session->data['user_token'], 'SSL'));
         
     }
 
@@ -488,7 +478,7 @@ class ControllerExtensionModuleDTwigManager extends Controller {
 
         if(!$this->validate()){
             $this->session->data['error'] = $this->language->get('error_permission');
-            $this->response->redirect($this->url->link($this->route, 'token='.$this->session->data['token'], 'SSL'));
+            $this->response->redirect($this->url->link($this->route, 'user_token='.$this->session->data['user_token'], 'SSL'));
         }
 
         // $this->load->model('module/d_event_manager');
@@ -497,7 +487,7 @@ class ControllerExtensionModuleDTwigManager extends Controller {
         $this->load->model('extension/module/d_twig_manager');
         $this->model_extension_module_d_twig_manager->uninstallCompatibility();
 
-        $this->response->redirect($this->url->link($this->route, 'token='.$this->session->data['token'], 'SSL'));
+        $this->response->redirect($this->url->link($this->route, 'user_token='.$this->session->data['user_token'], 'SSL'));
     }
 
 
