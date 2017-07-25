@@ -14,7 +14,7 @@
         "3.0.1.2",
         "3.0.2.0"
     ],
-    "type": "library",
+    "type": "module",
     "license": {
         "type": "free",
         "url": "https://shopunity.net/licenses/free"
@@ -41,7 +41,7 @@
     ],
     "changelog": [
         {
-            "varsion":"2.0.0",
+            "version":"2.0.0",
             "change": "Support for Opencart 3.x"
         }
     ]
