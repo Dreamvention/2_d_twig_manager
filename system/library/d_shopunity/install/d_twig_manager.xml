@@ -57,7 +57,7 @@
             <search><![CDATA[$this->twig = new \Twig_Environment($loader, $config);]]></search>
             <add position="after"><![CDATA[
             //d_twig_manager.xml
-            $this->twig->addExtension(new Twig_Extension_DTwigManager($this->registry));
+            $this->twig->addExtension(new \Twig_Extension_DTwigManager($this->registry));
             ]]></add>
         </operation>
     </file>
