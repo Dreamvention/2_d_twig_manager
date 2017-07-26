@@ -20,11 +20,11 @@
         "url": "https://shopunity.net/licenses/free"
     },
     "install": {
-        "url": "extension/d_shopunity/extension/install_ocmod&codename=d_twig_manager",
+        "url": "extension/d_shopunity/modification/install&codename=d_twig_manager",
         "xml": "system/library/d_shopunity/install/d_twig_manager.xml"
     },
     "uninstall": {
-        "url": "extension/d_shopunity/extension/uninstall_ocmod&codename=d_twig_manager"
+        "url": "extension/d_shopunity/modification/uninstall&codename=d_twig_manager"
     },
     "support": {
         "email": "support@shopunity.com",
