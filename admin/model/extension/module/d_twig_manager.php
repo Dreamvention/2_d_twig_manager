@@ -92,6 +92,8 @@ class ModelExtensionModuleDTwigManager extends Model {
 
         $this->model_extension_d_opencart_patch_modification->refreshCache();
 
+        @file_get_contents(HTTPS_CATALOG);
+
         return true;
     }
 
