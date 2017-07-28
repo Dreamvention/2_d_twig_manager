@@ -1,51 +1,45 @@
 {
     "codename": "d_twig_manager",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "name": "Twig Manager",
     "description": "Add twig support to you opencart and manage your twig template files",
-    "index": "extension/module/d_twig_manager",
-    "readme": "system/mbooth/readme/d_twig_manager.md",
     "author": {
-        "name": "Shopunity",
-        "email": "info@shopunity.com",
-        "url": "https://shopunity.net/"
+        "name": "Dreamvention",
+        "email": "info@dreamvention.com",
+        "url": "https://dreamvention.com"
     },
     "opencart_version": [
         "2.0.0.0",
-        "2.0.1.1",
+        "2.0.1.0",
         "2.0.1.1",
         "2.0.2.0",
         "2.0.3.1",
         "2.1.0.1",
         "2.1.0.2",
         "2.2.0.0",
+        "2.3.0.0",
+        "2.3.0.1",
         "2.3.0.2"
     ],
-    "type": "module",
+    "type": "library",
     "license": {
         "type": "free",
         "url": "https://shopunity.net/licenses/free"
     },
     "install": {
-        "url": "extension/module/install&extension=d_twig_manager",
-        "xml": "system/mbooth/install/d_twig_manager.xml"
+        "url": "extension/d_shopunity/modification/install&codename=d_twig_manager",
+        "xml": "system/library/d_shopunity/install/d_twig_manager.xml"
     },
     "uninstall": {
-        "url": "extension/module/uninstall&extension=d_twig_manager"
-    },
-    "update": {
-        "url": "extension/module/d_twig_manager/update"
+        "url": "extension/d_shopunity/modification/uninstall&codename=d_twig_manager"
     },
     "support": {
         "email": "support@shopunity.com",
         "url": "https://shopunity.net/"
     },
     "required": {
-        "d_shopunity": ">=3.0.41",
-        "d_twig": ">=1.29.0",
-        "d_codemirror": ">=5.13.3",
-        "d_bootstrap_extra": ">=1.0.0",
-        "d_bootstrap_switch": ">=3.3.4"
+        "d_opencart_patch": ">=1.0.0",
+        "d_twig": ">=1.29.0"
     },
     "files": [
         "system/mbooth/extension/d_twig_manager.json",
@@ -54,20 +48,23 @@
         "system/library/d_shopunity/extension/d_twig_manager.json",
         "system/library/d_shopunity/install/d_twig_manager.xml",
 
-        "admin/controller/extension/module/d_twig_manager.php",
+        "admin/controller/event/d_twig_manager.php",
         "admin/model/extension/module/d_twig_manager.php",
-        "admin/language/english/module/d_twig_manager.php",
-        "admin/language/english/extension/module/d_twig_manager.php",
-        "admin/language/en-gb/extension/module/d_twig_manager.php",
-        "admin/view/template/extension/module/d_twig_manager.tpl",
-        "admin/view/template/extension/module/d_twig_manager/theme_history.tpl",
 
-        "catalog/controller/extension/module/d_twig_manager.php",
+        "catalog/controller/event/d_twig_manager.php",
         "catalog/model/extension/module/d_twig_manager.php",
         
         "system/library/template/Twig/Extension/DTwigManager.php"
     ],
     "changelog": [
+        {
+            "varsion":"1.5.0",
+            "change": "1. Removed Admin"
+        },
+        {
+            "varsion":"1.4.1",
+            "change": "1. Bug fix."
+        },
         {
             "varsion":"1.4.0",
             "change": "1. Support new shopunity structure."
