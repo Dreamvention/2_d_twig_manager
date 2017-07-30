@@ -1,6 +1,6 @@
 {
     "codename": "d_twig_manager",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "name": "Twig Manager",
     "description": "Add twig support to you opencart and manage your twig template files",
     "author": {
@@ -57,6 +57,10 @@
         "system/library/template/Twig/Extension/DTwigManager.php"
     ],
     "changelog": [
+        {
+            "varsion":"1.5.1",
+            "change": "1. Added isCompatible"
+        },
         {
             "varsion":"1.5.0",
             "change": "1. Removed Admin"
