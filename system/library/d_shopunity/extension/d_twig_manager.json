@@ -1,6 +1,6 @@
 {
     "codename": "d_twig_manager",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "name": "Twig Manager",
     "description": "Add twig support to you opencart",
     "author": {
@@ -40,6 +40,10 @@
         "system/library/template/Twig/Extension/DTwigManager.php"
     ],
     "changelog": [
+        {
+            "version":"2.0.1",
+            "change": "Added isCompatible"
+        }
         {
             "version":"2.0.0",
             "change": "Support for Opencart 3.x"

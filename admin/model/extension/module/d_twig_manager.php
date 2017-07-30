@@ -76,6 +76,29 @@ class ModelExtensionModuleDTwigManager extends Model {
 
     }
 
+    public function isCompatible(){
+        if(VERSION >= '3.0.0.0'){
+            return true;
+        }
+
+        $d_opencart_patch = (file_exists(DIR_SYSTEM.'library/d_shopunity/extension/d_opencart_patch.json'));
+        if(!$d_opencart_patch){
+            return false;
+        }
+
+        $this->load->model('extension/d_opencart_patch/modification');
+
+        $compatibility = $this->model_extension_d_opencart_patch_modification->getModificationByName('d_twig_manager');
+        if($compatibility){
+            if(!empty($compatibility['status'])){
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
     public function installCompatibility(){
 
         $d_opencart_patch = (file_exists(DIR_SYSTEM.'library/d_shopunity/extension/d_opencart_patch.json'));
