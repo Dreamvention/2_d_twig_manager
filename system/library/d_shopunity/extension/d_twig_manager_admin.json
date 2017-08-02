@@ -43,7 +43,7 @@
         "admin/controller/extension/module/d_twig_manager.php",
         "admin/language/en-gb/extension/module/d_twig_manager.php",
         "admin/view/template/extension/module/d_twig_manager.twig",
-        "admin/view/template/extension/module/d_twig_manager/theme_history.twig",
+        "admin/view/template/extension/module/d_twig_manager/theme_history.twig"
     ],
     "changelog": [
         {
