@@ -1,46 +1,46 @@
-{{ header }} {{ column_left }} 
+{{ header }}{{ column_left }}
 <div id="content">
     <div class="page-header">
         <div class="container-fluid">
             <div class="form-inline pull-right">
                 
-                <a href="{{ cancel }} " data-toggle="tooltip" title="{{ button_cancel }} " class="btn btn-default"><i class="fa fa-reply"></i></a>
+                <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a>
             </div>
-            <h1>{{ heading_title }}  {{ version }} </h1>
+            <h1>{{ heading_title }} {{ version }}</h1>
             <ul class="breadcrumb">
                 {% for breadcrumb in breadcrumbs %} 
-                <li><a href="{{ breadcrumb.href }} ">{{ breadcrumb.text }} </a></li>
+                <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
                 {% endfor %} 
             </ul>
         </div>
     </div>
     <div class="container-fluid">
         {% if error.warning %} 
-        <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error.warning }} 
+        <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error.warning }}
             <button type="button" class="close" data-dismiss="alert">&times;</button>
         </div>
         {% endif %} 
         {% if success %} 
-        <div class="alert alert-success"><i class="fa fa-exclamation-circle"></i> {{ success }} 
+        <div class="alert alert-success"><i class="fa fa-exclamation-circle"></i> {{ success }}
             <button type="button" class="close" data-dismiss="alert">&times;</button>
         </div>
         {% endif %} 
         
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }} </h3>
+                <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
             </div>
             <div class="panel-body">
                 
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab_event" data-toggle="tab">
                             <span class="fa fa-pencil"></span> 
-                            {{ tab_editor }} 
+                            {{ tab_editor }}
                         </a></li>
 
                         <li><a href="#tab_setting" data-toggle="tab">
                             <span class="fa fa-cog"></span> 
-                            {{ tab_setting }} 
+                            {{ tab_setting }}
                         </a></li>
                     </ul>
 
@@ -51,29 +51,29 @@
                                   <div class="col-lg-3 col-md-3 col-sm-12">
                                     <div class="list-group">
                                       <div class="list-group-item">
-                                        <h4 class="list-group-item-heading">{{ text_store }} </h4>
+                                        <h4 class="list-group-item-heading">{{ text_store }}</h4>
                                       </div>
                                       <div class="list-group-item">
                                         <select name="store_id" class="form-control">
-                                          <option value="0">{{ text_default }} </option>
+                                          <option value="0">{{ text_default }}</option>
                                           {% for store in stores %} 
-                                          <option value="{{ store.store_id }} ">{{ store.name }} </option>
+                                          <option value="{{ store.store_id }}">{{ store.name }}</option>
                                           {% endfor %} 
                                         </select>
                                       </div>
                                     </div>
                                     <div class="list-group">
                                       <div class="list-group-item">
-                                        <h4 class="list-group-item-heading">{{ text_template }} </h4>
+                                        <h4 class="list-group-item-heading">{{ text_template }}</h4>
                                       </div>
                                       <div id="path"></div>
                                     </div>
                                   </div>
                                   <div class="col-lg-9 col-md-9 col-sm-12">
-                                    <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ text_begin }} </div>
+                                    <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ text_begin }}</div>
                                         <div id="recent">
                                           <fieldset>
-                                            <legend>{{ text_history }} </legend>
+                                            <legend>{{ text_history }}</legend>
                                             <div id="history"></div>
                                           </fieldset>
                                         </div>            
@@ -89,11 +89,11 @@
                         <div class="tab-pane" id="tab_setting" >
                             <div class="tab-body">
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label" for="input_compatibility">{{ entry_compatibility}} </label>
+                                    <label class="col-sm-2 control-label" for="input_compatibility">{{ entry_compatibility}}</label>
                                     <div class="col-sm-10">
                                         <input type="hidden" name="compatibility" value="0" />
-                                        <input type="checkbox" name="compatibility" class="switcher" data-label-text="{{ text_enabled }} "id="input_compatibility" {{ compatibility ? 'checked="checked"': }}'' value="1" />
-                                        <div class="bs-callout bs-callout-info m-t">{{ help_compatibility }} </div>
+                                        <input type="checkbox" name="compatibility" class="switcher" data-label-text="{{ text_enabled }}"id="input_compatibility" {{ compatibility ? 'checked="checked"': }}'' value="1" />
+                                        <div class="bs-callout bs-callout-info m-t">{{ help_compatibility }}</div>
                                     </div>
                                 </div><!-- //compatibility -->
                             </div>
@@ -123,13 +123,13 @@ $(function () {
     $(".switcher[type='checkbox']").bootstrapSwitch({
         'onColor': 'success',
         'labelWidth': '50',
-        'onText': '{{ text_yes }} ',
-        'offText': '{{ text_no }} ',
+        'onText': '{{ text_yes }}',
+        'offText': '{{ text_no }}',
         onSwitchChange: function(event, state){
             if(state){
-                window.location.href = '{{ install_compatibility }} '
+                window.location.href = '{{ install_compatibility }}'
             }else{
-                window.location.href = '{{ uninstall_compatibility }} '
+                window.location.href = '{{ uninstall_compatibility }}'
             }
         }
         
@@ -139,7 +139,7 @@ $(function () {
 
 $('select[name="store_id"]').on('change', function(e) {
     $.ajax({
-        url: 'index.php?route={{ route }} /path&user_token={{ user_token }} &store_id=' + $('select[name="store_id"]').val(),
+        url: 'index.php?route={{ route }}/path&user_token={{ user_token }}&store_id=' + $('select[name="store_id"]').val(),
         dataType: 'json',
         beforeSend: function() {
             $('select[name="store_id"]').prop('disabled', true);
@@ -178,7 +178,7 @@ $('#path').on('click', 'a.directory', function(e) {
     var node = this;
 
     $.ajax({
-        url: 'index.php?route={{ route }} /path&user_token={{ user_token }} &store_id=' + $('select[name="store_id"]').val() + '&path=' + $(node).attr('href'),
+        url: 'index.php?route={{ route }}/path&user_token={{ user_token }}&store_id=' + $('select[name="store_id"]').val() + '&path=' + $(node).attr('href'),
         dataType: 'json',
         beforeSend: function() {
             $(node).find('i').removeClass('fa-arrow-right');
@@ -231,7 +231,7 @@ $('#path').on('click', 'a.file',function(e) {
 
     if (!$('#tab-' + tab_id).length) {
         $.ajax({
-            url: 'index.php?route={{ route }} /template&user_token={{ user_token }} &store_id=' + $('select[name="store_id"]').val() + '&path=' + $(node).attr('href'),
+            url: 'index.php?route={{ route }}/template&user_token={{ user_token }}&store_id=' + $('select[name="store_id"]').val() + '&path=' + $(node).attr('href'),
             dataType: 'json',
             beforeSend: function() {
                 $(node).find('i').removeClass('fa-arrow-right');
@@ -254,8 +254,8 @@ $('#path').on('click', 'a.file',function(e) {
                     html += '  <input type="hidden" name="path" value="' + $(node).attr('href') + '" />';
                     html += '  <br />';
                     html += '  <div class="pull-right">';
-                    html += '    <button type="button" data-loading-text="{{ text_loading }} " class="btn btn-primary"><i class="fa fa-floppy-o"></i> {{ button_save }} </button>';
-                    html += '    <button type="button" data-loading-text="{{ text_loading }} " class="btn btn-danger"><i class="fa fa-recycle"></i> {{ button_reset }} </button>';
+                    html += '    <button type="button" data-loading-text="{{ text_loading }}" class="btn btn-primary"><i class="fa fa-floppy-o"></i> {{ button_save }}</button>';
+                    html += '    <button type="button" data-loading-text="{{ text_loading }}" class="btn btn-danger"><i class="fa fa-recycle"></i> {{ button_reset }}</button>';
                     html += '  </div>';
                     html += '</div>';
 
@@ -313,7 +313,7 @@ $('.file-content').on('click', '.btn-primary', function(e) {
     var editor = $('.file-content .active .CodeMirror')[0].CodeMirror;
                 
     $.ajax({
-        url: 'index.php?route={{ route }} /save&user_token={{ user_token }} &store_id=' + $('.file-content .active input[name="store_id"]').val() + '&path=' + $('.file-content .active input[name="path"]').val(),
+        url: 'index.php?route={{ route }}/save&user_token={{ user_token }}&store_id=' + $('.file-content .active input[name="store_id"]').val() + '&path=' + $('.file-content .active input[name="path"]').val(),
         type: 'post',
         data: 'code=' + encodeURIComponent(editor.getValue()),
         dataType: 'json',
@@ -332,7 +332,7 @@ $('.file-content').on('click', '.btn-primary', function(e) {
 
             if (json['success']) {
                 $('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-exclamation-circle"></i> ' + json['success'] + '  <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-                $('#history').load('index.php?route={{ route }} /history&user_token={{ user_token }} ');
+                $('#history').load('index.php?route={{ route }}/history&user_token={{ user_token }}');
             }
         },
         error: function(xhr, ajaxOptions, thrownError) {
@@ -342,11 +342,11 @@ $('.file-content').on('click', '.btn-primary', function(e) {
 });
 
 $('.file-content').on('click', '.btn-danger', function(e) {
-    if (confirm('{{ text_confirm }} ')) {
+    if (confirm('{{ text_confirm }}')) {
         var node = this;
 
         $.ajax({
-            url: 'index.php?route={{ route }} /reset&user_token={{ user_token }} &store_id=' + $('.file-content .active input[name="store_id"]').val() + '&path=' + $('.file-content .active input[name="path"]').val(),
+            url: 'index.php?route={{ route }}/reset&user_token={{ user_token }}&store_id=' + $('.file-content .active input[name="store_id"]').val() + '&path=' + $('.file-content .active input[name="path"]').val(),
             dataType: 'json',
             beforeSend: function() {
                 $(node).button('loading');
@@ -383,7 +383,7 @@ $('#history').delegate('.pagination a', 'click', function(e) {
     $('#history').load(this.href);
 });
 
-$('#history').load('index.php?route={{ route }} /history&user_token={{ user_token }} ');
+$('#history').load('index.php?route={{ route }}/history&user_token={{ user_token }}');
 
 $('#history').on('click', '.btn-primary', function(e) {
     e.preventDefault();
@@ -395,7 +395,7 @@ $('#history').on('click', '.btn-primary', function(e) {
 
     if (!$('#tab-' + tab_id).length) {
         $.ajax({
-            url: 'index.php?route=extension/module/d_twig_manager/template&user_token={{ user_token }} &store_id=' + $(node).parent().parent().find('input[name="store_id"]').val() + '&path=' + $(node).parent().parent().find('input[name="path"]').val(),
+            url: 'index.php?route=extension/module/d_twig_manager/template&user_token={{ user_token }}&store_id=' + $(node).parent().parent().find('input[name="store_id"]').val() + '&path=' + $(node).parent().parent().find('input[name="path"]').val(),
             dataType: 'json',
             beforeSend: function() {
                 $(node).button('loading');
@@ -416,8 +416,8 @@ $('#history').on('click', '.btn-primary', function(e) {
                     html += '  <input type="hidden" name="path" value="' + $(node).parent().parent().find('input[name="path"]').val() + '.twig" />';
                     html += '  <br />';
                     html += '  <div class="pull-right">';
-                    html += '    <button type="button" data-loading-text="{{ text_loading }} " class="btn btn-primary"><i class="fa fa-floppy-o"></i> {{ button_save }} </button>';
-                    html += '    <button data-loading-text="{{ text_loading }} " class="btn btn-danger"><i class="fa fa-recycle"></i> {{ button_reset }} </button>';
+                    html += '    <button type="button" data-loading-text="{{ text_loading }}" class="btn btn-primary"><i class="fa fa-floppy-o"></i> {{ button_save }}</button>';
+                    html += '    <button data-loading-text="{{ text_loading }}" class="btn btn-danger"><i class="fa fa-recycle"></i> {{ button_reset }}</button>';
                     html += '  </div>';
                     html += '</div>';
 
@@ -449,7 +449,7 @@ $('#history').on('click', '.btn-primary', function(e) {
 $('#history').on('click', '.btn-danger', function(e) {
     e.preventDefault();
     
-    if (confirm('{{ text_confirm }} ')) {
+    if (confirm('{{ text_confirm }}')) {
         var node = this;
 
         $.ajax({
@@ -471,7 +471,7 @@ $('#history').on('click', '.btn-danger', function(e) {
                 if (json['success']) {
                     $('#history').before('<div class="alert alert-success"><i class="fa fa-exclamation-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
                 
-                    $('#history').load('index.php?route={{ route }} /history&user_token={{ user_token }} ');
+                    $('#history').load('index.php?route={{ route }}/history&user_token={{ user_token }}');
                 }
             },
             error: function(xhr, ajaxOptions, thrownError) {
@@ -483,4 +483,4 @@ $('#history').on('click', '.btn-danger', function(e) {
 
 
 //--></script> 
-{{ footer }} 
+{{ footer }}

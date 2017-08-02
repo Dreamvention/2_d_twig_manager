@@ -27,8 +27,8 @@
         "url": "extension/d_shopunity/modification/uninstall&codename=d_twig_manager"
     },
     "support": {
-        "email": "support@shopunity.com",
-        "url": "https://shopunity.net/"
+        "email": "support@dreamvention.com",
+        "url": "https:/dreamvention.com/support"
     },
     "required": {
         "d_opencart_patch": ">=3.0.0"
