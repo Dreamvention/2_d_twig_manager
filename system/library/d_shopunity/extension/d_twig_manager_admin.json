@@ -2,7 +2,7 @@
     "codename": "d_twig_manager_admin",
     "version": "2.0.0",
     "name": "Twig Manager Admin",
-    "description": "Add twig support to you opencart and manage your twig template files",
+    "description": "Add twig support to you opencart and manage your twig template files.",
     "index": "extension/module/d_twig_manager",
     "author": {
         "name": "Dreamvention",
