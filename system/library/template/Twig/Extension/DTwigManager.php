@@ -433,10 +433,6 @@ class Twig_Extension_DTwigManager extends Twig_Extension
             $globals['customer'] = $customer;
             $globals['is_logged'] = $customer->isLogged();
 
-            $affiliate = $this->registry->get('affiliate');
-            $globals['affiliate'] = $affiliate;
-            $globals['is_affiliate_logged'] = $affiliate->isLogged();
-
             $globals['cart'] = $this->registry->get('cart');
         }
 

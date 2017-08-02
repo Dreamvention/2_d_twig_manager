@@ -77,9 +77,6 @@ class ModelExtensionModuleDTwigManager extends Model {
     }
 
     public function isCompatible(){
-        if(VERSION >= '3.0.0.0'){
-            return true;
-        }
 
         $d_opencart_patch = (file_exists(DIR_SYSTEM.'library/d_shopunity/extension/d_opencart_patch.json'));
         if(!$d_opencart_patch){
