@@ -21,33 +21,17 @@ class ControllerExtensionModuleDTwigManager extends Controller {
         
     }
 
-    public function required(){
-        $this->load->language($this->route);
-
-        $this->document->setTitle($this->language->get('heading_title_main'));
-        $data['heading_title'] = $this->language->get('heading_title_main');
-        $data['text_not_found'] = $this->language->get('text_not_found');
-        $data['breadcrumbs'] = array();
-
-           $data['header'] = $this->load->controller('common/header');
-           $data['column_left'] = $this->load->controller('common/column_left');
-           $data['footer'] = $this->load->controller('common/footer');
-
-           $this->request->get['extension'] = $this->codename;
-           $this->response->setOutput($this->load->view('error/not_found.tpl', $data));
-    }
-
-
     public function index() {
 
-        if(!$this->d_shopunity){
-            $this->response->redirect($this->url->link($this->route.'/required', 'codename='.$this->codename.'y&user_token='.$this->session->data['user_token'], 'SSL'));
+        if($this->d_shopunity){
+            $this->load->model('extension/d_shopunity/mbooth');
+            $this->model_extension_d_shopunity_mbooth->validateDependencies($this->codename);
         }
 
-        $this->load->model('extension/d_shopunity/mbooth');
+        $this->load->model('extension/d_opencart_patch/url');
+        $this->load->model('extension/d_opencart_patch/load');
+        
         $this->load->model('extension/module/d_twig_manager');
-        $this->model_extension_d_shopunity_mbooth->validateDependencies($this->codename);
-
         $this->load->language('extension/module/d_twig_manager');
 
         // styles and scripts
@@ -68,17 +52,17 @@ class ControllerExtensionModuleDTwigManager extends Controller {
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('text_home'),
-            'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
+            'href' => $this->model_extension_d_opencart_patch_url->link('common/dashboard')
         );
 
         $data['breadcrumbs'][] = array(
             'text'      => $this->language->get('text_module'),
-            'href'      => $this->url->link('extension/module', 'user_token=' . $this->session->data['user_token'], 'SSL')
+            'href'      => $this->model_extension_d_opencart_patch_url->link('marketplace/extension','type=module')
         );
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title_main'),
-            'href' => $this->url->link('design/theme', 'user_token=' . $this->session->data['user_token'], true)
+            'href' => $this->model_extension_d_opencart_patch_url->link($this->route)
         );
 
         $data['id'] = $this->codename;
@@ -117,17 +101,13 @@ class ControllerExtensionModuleDTwigManager extends Controller {
         $data['button_cancel'] = $this->language->get('button_cancel');
         $data['button_save'] = $this->language->get('button_save');
         $data['button_reset'] = $this->language->get('button_reset');
-        $data['install_compatibility'] = $this->model_extension_module_d_twig_manager->ajax($this->route.'/install_compatibility', 'user_token=' . $this->session->data['user_token'], 'SSL');
-        $data['uninstall_compatibility'] = $this->model_extension_module_d_twig_manager->ajax($this->route.'/uninstall_compatibility', 'user_token=' . $this->session->data['user_token'], 'SSL');
+        $data['install_compatibility'] = $this->model_extension_d_opencart_patch_url->ajax($this->route.'/install_compatibility');
+        $data['uninstall_compatibility'] = $this->model_extension_d_opencart_patch_url->ajax($this->route.'/uninstall_compatibility');
         
 
         $data['user_token'] = $this->session->data['user_token'];
         
-        if(VERSION >= '2.3.0.0'){    
-            $data['cancel'] = $this->url->link('extension/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true);
-        }else{
-            $data['cancel'] = $this->url->link('extension/module', 'user_token=' . $this->session->data['user_token'], 'SSL');
-        }
+        $data['cancel'] = $this->model_extension_d_opencart_patch_url->link('marketplace/extension', 'type=module');
 
         $data['stores'] = array();
         
@@ -150,11 +130,13 @@ class ControllerExtensionModuleDTwigManager extends Controller {
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
 
-        $this->response->setOutput($this->load->view('extension/module/d_twig_manager.tpl', $data));
+        $this->response->setOutput($this->model_extension_d_opencart_patch_load->view('extension/module/d_twig_manager', $data));
     }
     
     public function history() {
         $this->load->language('extension/module/d_twig_manager');
+        $this->load->model('extension/d_opencart_patch/url');
+        $this->load->model('extension/d_opencart_patch/load');
         
         $data['text_no_results'] = $this->language->get('text_no_results');
         $data['text_loading'] = $this->language->get('text_loading');
@@ -198,8 +180,8 @@ class ControllerExtensionModuleDTwigManager extends Controller {
                 'route'      => $result['route'],
                 'theme'      => $result['theme'],
                 'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-                'edit'       => $this->url->link($this->route.'/template', 'user_token=' . $this->session->data['user_token'], true),
-                'delete'     => $this->url->link($this->route.'/delete', 'user_token=' . $this->session->data['user_token'] . '&theme_id=' . $result['theme_id'], true)
+                'edit'       => $this->model_extension_d_opencart_patch_url->link($this->route.'/template'),
+                'delete'     => $this->model_extension_d_opencart_patch_url->link($this->route.'/delete', 'theme_id=' . $result['theme_id'])
             );            
         }
 
@@ -207,13 +189,13 @@ class ControllerExtensionModuleDTwigManager extends Controller {
         $pagination->total = $history_total;
         $pagination->page = $page;
         $pagination->limit = 10;
-        $pagination->url = $this->url->link($this->route.'/history', 'user_token=' . $this->session->data['user_token'] . '&page={page}', true);
+        $pagination->url = $this->model_extension_d_opencart_patch_url->link($this->route.'/history', 'page={page}');
 
         $data['pagination'] = $pagination->render();
 
         $data['results'] = sprintf($this->language->get('text_pagination'), ($history_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($history_total - 10)) ? $history_total : ((($page - 1) * 10) + 10), $history_total, ceil($history_total / 10));
 
-        $this->response->setOutput($this->load->view('extension/module/d_twig_manager/theme_history.tpl', $data));
+        $this->response->setOutput($this->model_extension_d_opencart_patch_load->view('extension/module/d_twig_manager/theme_history', $data));
     }
         
     public function path() {
@@ -456,9 +438,11 @@ class ControllerExtensionModuleDTwigManager extends Controller {
 
     public function install_compatibility(){
 
+        $this->load->model('extension/d_opencart_patch/url');
+
         if(!$this->validate()){
             $this->session->data['error'] = $this->language->get('error_permission');
-            $this->response->redirect($this->url->link($this->route, 'user_token='.$this->session->data['user_token'], 'SSL'));
+            $this->response->redirect($this->model_extension_d_opencart_patch_url->link($this->route));
         }
 
         //$this->load->model('module/d_event_manager');
@@ -470,15 +454,16 @@ class ControllerExtensionModuleDTwigManager extends Controller {
         $this->model_extension_module_d_twig_manager->installCompatibility();
 
         $this->session->data['success'] = $this->language->get('text_success');
-        $this->response->redirect($this->url->link($this->route, 'user_token='.$this->session->data['user_token'], 'SSL'));
+        $this->response->redirect($this->model_extension_d_opencart_patch_url->link($this->route));
         
     }
 
     public function uninstall_compatibility(){
+        $this->load->model('extension/d_opencart_patch/url');
 
         if(!$this->validate()){
             $this->session->data['error'] = $this->language->get('error_permission');
-            $this->response->redirect($this->url->link($this->route, 'user_token='.$this->session->data['user_token'], 'SSL'));
+            $this->response->redirect($this->model_extension_d_opencart_patch_url->link($this->route));
         }
 
         // $this->load->model('module/d_event_manager');
@@ -487,7 +472,7 @@ class ControllerExtensionModuleDTwigManager extends Controller {
         $this->load->model('extension/module/d_twig_manager');
         $this->model_extension_module_d_twig_manager->uninstallCompatibility();
 
-        $this->response->redirect($this->url->link($this->route, 'user_token='.$this->session->data['user_token'], 'SSL'));
+        $this->response->redirect($this->model_extension_d_opencart_patch_url->link($this->route));
     }
 
 
