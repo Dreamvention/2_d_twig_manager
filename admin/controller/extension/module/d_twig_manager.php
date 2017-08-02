@@ -506,11 +506,10 @@ class ControllerExtensionModuleDTwigManager extends Controller {
         if($this->d_shopunity){
             $this->load->model('extension/d_shopunity/mbooth');
             $this->model_extension_d_shopunity_mbooth->installDependencies($this->codename);  
-
-            $this->load->model('extension/module/d_twig_manager');
-            $this->model_extension_module_d_twig_manager->installDatabase();
-
         }
+
+        $this->load->model('extension/module/d_twig_manager');
+        $this->model_extension_module_d_twig_manager->installDatabase();
     }
 
     public function uninstall() {
