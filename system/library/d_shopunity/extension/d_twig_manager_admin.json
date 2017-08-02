@@ -1,0 +1,61 @@
+{
+    "codename": "d_twig_manager_admin",
+    "version": "1.0.0",
+    "name": "Twig Manager Admin",
+    "description": "Add twig support to you opencart and manage your twig template files",
+    "index": "extension/module/d_twig_manager",
+    "author": {
+        "name": "Shopunity",
+        "email": "info@shopunity.com",
+        "url": "https://shopunity.net/"
+    },
+    "opencart_version": [
+        "2.0.0.0",
+        "2.0.1.0",
+        "2.0.1.1",
+        "2.0.2.0",
+        "2.0.3.1",
+        "2.1.0.1",
+        "2.1.0.2",
+        "2.2.0.0",
+        "2.3.0.0",
+        "2.3.0.1",
+        "2.3.0.2"
+    ],
+    "type": "module",
+    "license": {
+        "type": "free",
+        "url": "https://shopunity.net/licenses/free"
+    },
+    "install": {
+        "url": "extension/extension/module/install&extension=d_twig_manager"
+    },
+    "uninstall": {
+        "url": "extension/extension/module/uninstall&extension=d_twig_manager"
+    },
+    "support": {
+        "email": "support@shopunity.com",
+        "url": "https://shopunity.net/"
+    },
+    "required": {
+        "d_opencart_patch": ">=1.0.0",
+        "d_twig_manager": ">=1.5.0",
+        "d_codemirror": ">=5.13.3",
+        "d_bootstrap_extra": ">=1.0.0",
+        "d_bootstrap_switch": ">=3.3.4"
+    },
+    "files": [
+        "system/library/d_shopunity/extension/d_twig_manager_admin.json",
+
+        "admin/controller/extension/module/d_twig_manager.php",
+        "admin/language/en-gb/extension/module/d_twig_manager.php",
+        "admin/view/template/extension/module/d_twig_manager.tpl",
+        "admin/view/template/extension/module/d_twig_manager/theme_history.tpl",
+    ],
+    "changelog": [
+        {
+            "varsion":"1.0.0",
+            "change": "Initial commit"
+        }
+    ]
+}
