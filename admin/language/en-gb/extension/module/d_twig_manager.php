@@ -30,7 +30,7 @@ $_['column_action']             = 'Action';
 
 //field
 $_['entry_compatibility']       = 'Activate Twig support';
-$_['help_compatibility']        = '<h4>Twig files</h4><p>When Activated, your opencart will look for twig files first, and if not found will fallback to avalible .tpl files. If they are missing - will repeat the same process for default theme.</p>';
+$_['help_compatibility']        = '<h4>Twig files</h4><p>When Activated, opencart twig library gets extra methods such as template(). Use it to speedup your development and make it more flexible.</p>';
 $_['entry_test_toggle']         = 'Test the status of events';
 $_['help_event_support']        = '<h4>Important! Event Support required</h4> <p>Before you can use twig templates, you must first install and activate event manager. Inside Event Manager tab settings activate Compatibility support. Because you are using opencart v'.VERSION.' your opencart does not support the latest event features. When installing Event manager and activating compatibility in tab Settings, you will be able to activate twig here.</p>';
 
