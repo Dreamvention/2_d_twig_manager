@@ -77,7 +77,7 @@ class ModelExtensionModuleDTwigManager extends Model {
     }
 
     public function isCompatible(){
-        
+
         $d_opencart_patch = (file_exists(DIR_SYSTEM.'library/d_shopunity/extension/d_opencart_patch.json'));
         if(!$d_opencart_patch){
             return false;
@@ -111,8 +111,6 @@ class ModelExtensionModuleDTwigManager extends Model {
         $this->installDatabase();
 
         $this->model_extension_d_opencart_patch_modification->refreshCache();
-
-        @file_get_contents(HTTPS_CATALOG);
 
         return true;
     }
