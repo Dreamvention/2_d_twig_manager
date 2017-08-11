@@ -1,6 +1,6 @@
 {
     "codename": "d_twig_manager",
-    "version": "1.5.2",
+    "version": "1.5.3",
     "name": "Twig Manager",
     "description": "Add twig support to you opencart and manage your twig template files",
     "author": {
@@ -26,16 +26,9 @@
         "type": "free",
         "url": "https://shopunity.net/licenses/free"
     },
-    "install": {
-        "url": "extension/d_shopunity/modification/install&codename=d_twig_manager",
-        "xml": "system/library/d_shopunity/install/d_twig_manager.xml"
-    },
-    "uninstall": {
-        "url": "extension/d_shopunity/modification/uninstall&codename=d_twig_manager"
-    },
     "support": {
-        "email": "support@shopunity.com",
-        "url": "https://shopunity.net/"
+        "email": "support@dreamvention.com",
+        "url": "https:/dreamvention.com/support"
     },
     "required": {
         "d_opencart_patch": ">=1.0.0",
@@ -57,6 +50,10 @@
         "system/library/template/Twig/Extension/DTwigManager.php"
     ],
     "changelog": [
+        {
+            "varsion":"1.5.3",
+            "change": "Removed autoload"
+        },
         {
             "varsion":"1.5.2",
             "change": "Bug fixes"
