@@ -26,6 +26,9 @@
         "type": "free",
         "url": "https://shopunity.net/licenses/free"
     },
+    "uninstall": {
+        "url": "extension/d_shopunity/modification/uninstall&codename=d_twig_manager"
+    },
     "support": {
         "email": "support@dreamvention.com",
         "url": "https:/dreamvention.com/support"
