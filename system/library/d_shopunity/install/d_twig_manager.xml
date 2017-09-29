@@ -12,7 +12,7 @@
             <add position="before"><![CDATA[
             //d_twig_manager.xml 1
             $output = $this->controller('event/d_twig_manager/support', array('route' => $template, 'data' => $data));
-            if($output || !file_exists( DIR_TEMPLATE . $template . '.tpl')){
+            if($output || !file_exists( DIR_TEMPLATE . $template)){
                 return $output;
             }
             ]]></add>
