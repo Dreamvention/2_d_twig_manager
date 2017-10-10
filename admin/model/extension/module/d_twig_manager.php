@@ -103,14 +103,19 @@ class ModelExtensionModuleDTwigManager extends Model {
             return false;
         }
 
-        $this->load->model('extension/d_opencart_patch/modification');
+        if(!$this->isCompatible()){
+            $this->load->model('extension/d_opencart_patch/modification');
 
-        $this->model_extension_d_opencart_patch_modification->setModification('d_twig_manager.xml', 0);
-        $this->model_extension_d_opencart_patch_modification->setModification('d_twig_manager.xml', 1);
+            $this->model_extension_d_opencart_patch_modification->setModification('d_twig_manager.xml', 0);
+            $this->model_extension_d_opencart_patch_modification->setModification('d_twig_manager.xml', 1);
 
-        $this->installDatabase();
+            $this->installDatabase();
 
-        $this->model_extension_d_opencart_patch_modification->refreshCache();
+            $this->model_extension_d_opencart_patch_modification->refreshCache();
+
+            $this->load->model('extension/d_opencart_patch/url');
+            $this->response->redirect($this->model_extension_d_opencart_patch_url->link($this->request->get['route']));
+        }
 
         return true;
     }
