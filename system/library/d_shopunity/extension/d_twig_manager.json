@@ -1,6 +1,6 @@
 {
     "codename": "d_twig_manager",
-    "version": "1.5.4",
+    "version": "1.5.5",
     "name": "Twig Manager",
     "description": "Add twig support to you opencart and manage your twig template files",
     "author": {
@@ -53,6 +53,10 @@
         "system/library/template/Twig/Extension/DTwigManager.php"
     ],
     "changelog": [
+        {
+            "varsion":"1.5.5",
+            "change": "Simplified the twig compatibility activation"
+        },
         {
             "varsion":"1.5.4",
             "change": "Fixed a conflict for 2.1.0.0 and below when tpl files do not exist."
