@@ -57,7 +57,8 @@
             <search><![CDATA[$this->twig = new \Twig_Environment($loader, $config);]]></search>
             <add position="after"><![CDATA[
             //d_twig_manager.xml
-            $this->twig->addExtension(new \Twig_Extension_DTwigManager($this->registry));
+            if (file_exists(DIR_SYSTEM . 'library/template/Twig/Extension/DTwigManager.php')) {
+                $this->twig->addExtension(new \Twig_Extension_DTwigManager($this->registry));
             ]]></add>
         </operation>
     </file>
@@ -66,7 +67,9 @@
             <search><![CDATA[$twig = new \Twig_Environment($loader, $config);]]></search>
             <add position="after"><![CDATA[
             //d_twig_manager.xml
-            $twig->addExtension(new Twig_Extension_DTwigManager($this->registry));
+            if (file_exists(DIR_SYSTEM . 'library/template/Twig/Extension/DTwigManager.php')) {
+                $twig->addExtension(new Twig_Extension_DTwigManager($this->registry));
+            }
             ]]></add>
         </operation>
     </file>
