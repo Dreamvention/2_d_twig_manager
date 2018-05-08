@@ -59,6 +59,7 @@
             //d_twig_manager.xml
             if (file_exists(DIR_SYSTEM . 'library/template/Twig/Extension/DTwigManager.php')) {
                 $this->twig->addExtension(new \Twig_Extension_DTwigManager($this->registry));
+            }
             ]]></add>
         </operation>
     </file>
