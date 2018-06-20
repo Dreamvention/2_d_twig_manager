@@ -88,7 +88,14 @@ class ModelExtensionModuleDTwigManager extends Model {
         $compatibility = $this->model_extension_d_opencart_patch_modification->getModificationByName('d_twig_manager');
         if($compatibility){
             if(!empty($compatibility['status'])){
-                return true;
+                if(VERSION < '3.0.0.0'){
+                    $content = file_get_contents(DIR_MODIFICATION.'system/engine/loader.php');
+                    if(strpos($content, 'event/d_twig_manager/support')){
+                        return true;
+                    }
+                }else{
+                    return true;
+                }
             }
         }
 
