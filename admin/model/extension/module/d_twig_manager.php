@@ -89,9 +89,11 @@ class ModelExtensionModuleDTwigManager extends Model {
         if($compatibility){
             if(!empty($compatibility['status'])){
                 if(VERSION < '3.0.0.0'){
-                    $content = file_get_contents(DIR_MODIFICATION.'system/engine/loader.php');
-                    if(strpos($content, 'event/d_twig_manager/support')){
-                        return true;
+                    if(file_exists(DIR_MODIFICATION.'system/engine/loader.php')){
+                        $content = file_get_contents(DIR_MODIFICATION.'system/engine/loader.php');
+                        if(strpos($content, 'event/d_twig_manager/support')){
+                            return true;
+                        }
                     }
                 }else{
                     return true;
