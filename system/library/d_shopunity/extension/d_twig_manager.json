@@ -55,7 +55,7 @@
     "changelog": [
         {
             "varsion":"1.5.7",
-            "change": "Fix Check for modification status of Twig"
+            "change": "Fix for Check of modification status of Twig"
         },
         {
             "varsion":"1.5.6",
