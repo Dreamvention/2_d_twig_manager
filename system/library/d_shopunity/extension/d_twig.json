@@ -1,9 +1,8 @@
 {
     "codename": "d_twig",
-    "version": "1.29.1",
+    "version": "1.29.2",
     "name": "Twig Library",
     "description": "Twig - templating engine",
-    "readme": "system/library/d_shopunity/readme/d_twig.md",
     "author": {
         "name": "Shopunity",
         "email": "info@shopunity.com",
@@ -40,6 +39,10 @@
         "system/library/template/Twig"
     ],
     "changelog": [
+        {
+            "varsion":"1.29.2",
+            "change": "Removed Readme"
+        },
         {
             "varsion":"1.29.1",
             "change": "New structure"
