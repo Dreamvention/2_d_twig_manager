@@ -263,25 +263,26 @@ class Twig_Extension_DTwigManager extends Twig_Extension
     }
 
     public function templateFunction($view){
-        $config = $this->registry->get('config');
-        if ($config->get('config_theme') == 'default') {
-            $theme = $config->get('theme_default_directory');
-        } else {
-            $theme = $config->get('config_theme');
-        }
+        if(!$this->is_admin) {
+            $config = $this->registry->get('config');
+            if ($config->get('config_theme') == 'default') {
+                $theme = $config->get('theme_default_directory');
+            } else {
+                $theme = $config->get('config_theme');
+            }
 
-        if(!$theme){
-            $theme = $config->get('config_template');
-        }
+            if (!$theme) {
+                $theme = $config->get('config_template');
+            }
 
-        if (is_file(DIR_TEMPLATE . $theme . '/template/' . $view . '.twig')) {
-            $view = $theme . '/template/' . $view . '.twig';
-        } elseif (is_file(DIR_TEMPLATE . 'default/template/' . $view . '.twig')) {
-            $view = 'default/template/' . $view . '.twig';
-        } else {
-            $view = 'default/template/partial/d_empty.twig';
+            if (is_file(DIR_TEMPLATE . $theme . '/template/' . $view . '.twig')) {
+                $view = $theme . '/template/' . $view . '.twig';
+            } elseif (is_file(DIR_TEMPLATE . 'default/template/' . $view . '.twig')) {
+                $view = 'default/template/' . $view . '.twig';
+            } else {
+                $view = 'default/template/partial/d_empty.twig';
+            }
         }
-
         return $view;
     }
 
