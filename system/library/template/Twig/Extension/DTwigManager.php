@@ -36,6 +36,7 @@ class Twig_Extension_DTwigManager extends Twig_Extension
             new \Twig_SimpleFunction('can_access', array($this, 'canAccessFunction')),
             new \Twig_SimpleFunction('can_modify', array($this, 'canModifyFunction')),
             new \Twig_SimpleFunction('template', array($this, 'templateFunction')),
+            new \Twig_SimpleFunction('content', array($this, 'contentFunction')),
         );
     }
 
@@ -257,9 +258,13 @@ class Twig_Extension_DTwigManager extends Twig_Extension
     }
 
 
+    public function contentFunction($view){
+        return file_get_contents($this->templateFunction($view));
+    }
+
     public function templateFunction($view){
         $config = $this->registry->get('config');
-        if ($config->get('config_theme') == 'theme_default') {
+        if ($config->get('config_theme') == 'default') {
             $theme = $config->get('theme_default_directory');
         } else {
             $theme = $config->get('config_theme');

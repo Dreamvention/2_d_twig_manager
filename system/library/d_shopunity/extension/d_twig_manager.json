@@ -1,6 +1,6 @@
 {
     "codename": "d_twig_manager",
-    "version": "2.0.5",
+    "version": "2.0.6",
     "name": "Twig Manager",
     "description": "Add twig support to you opencart",
     "author": {
@@ -39,6 +39,10 @@
         "system/library/template/Twig/Extension/DTwigManager.php"
     ],
     "changelog": [
+        {
+            "version":"2.0.6",
+            "change": "fix theme include function; add contentFunction -> file_get_content()"
+        },
         {
             "version":"2.0.5",
             "change": "Fix but from uninstall"
