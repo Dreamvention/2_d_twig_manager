@@ -266,7 +266,7 @@ class Twig_Extension_DTwigManager extends Twig_Extension
 
     public function contentFunction($view, $extension_file = 'twig')
     {
-        return file_get_contents($this->templateFunction($view, $extension_file));
+        return file_get_contents(DIR_TEMPLATE . $this->templateFunction($view, $extension_file));
     }
 
     public function templateFunction($view, $extension_file = 'twig')
@@ -290,6 +290,8 @@ class Twig_Extension_DTwigManager extends Twig_Extension
             } else {
                 $view = 'default/template/partial/d_empty.twig';
             }
+        } else {
+            $view .= $extension_file;
         }
         return $view;
     }
