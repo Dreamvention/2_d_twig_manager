@@ -1,6 +1,6 @@
 {
     "codename": "d_twig_manager",
-    "version": "2.0.3",
+    "version": "2.0.6",
     "name": "Twig Manager",
     "description": "Add twig support to you opencart",
     "author": {
@@ -20,8 +20,7 @@
         "url": "https://shopunity.net/licenses/free"
     },
     "install": {
-        "url": "extension/d_shopunity/modification/install&codename=d_twig_manager",
-        "xml": "system/library/d_shopunity/install/d_twig_manager.xml"
+        "url": "extension/d_shopunity/modification/install&codename=d_twig_manager"
     },
     "uninstall": {
         "url": "extension/d_shopunity/modification/uninstall&codename=d_twig_manager"
@@ -41,8 +40,20 @@
     ],
     "changelog": [
         {
-            "version":"2.0.3",
+            "version":"2.0.6",
             "change": "fix theme include function; add contentFunction -> file_get_content()"
+        },
+        {
+            "version":"2.0.5",
+            "change": "Fix but from uninstall"
+        },
+        {
+            "version":"2.0.4",
+            "change": "Simplified the twig compatibility activation"
+        },
+        {
+            "version":"2.0.3",
+            "change": "remove modification xml from installer"
         },
         {
             "version":"2.0.2",

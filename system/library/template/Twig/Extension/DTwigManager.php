@@ -14,7 +14,8 @@ class Twig_Extension_DTwigManager extends Twig_Extension
     /**
      * @param Registry $registry
      */
-    public function __construct(\Registry $registry) {
+    public function __construct(\Registry $registry)
+    {
         $this->registry = $registry;
 
         $this->is_admin = defined('DIR_CATALOG');
@@ -41,9 +42,9 @@ class Twig_Extension_DTwigManager extends Twig_Extension
     }
 
     /**
-     * @param null  $route
+     * @param null $route
      * @param array $args
-     * @param bool  $secure
+     * @param bool $secure
      *
      * @return string
      */
@@ -53,17 +54,17 @@ class Twig_Extension_DTwigManager extends Twig_Extension
         $session = $this->registry->get('session');
         $token = isset($session->data['token']) ? $session->data['token'] : null;
 
-        if($this->is_admin && $token) {
+        if ($this->is_admin && $token) {
             $args['token'] = $token;
         }
 
-        if(is_array($args)) {
+        if (is_array($args)) {
             $args = http_build_query($args);
         }
 
-        if(!empty($route)) {
+        if (!empty($route)) {
             return $url->link($route, $args, $secure);
-        } else if($secure) {
+        } else if ($secure) {
             return !empty($args) ? HTTPS_SERVER . 'index.php?' . $args : HTTPS_SERVER;
         }
 
@@ -80,7 +81,7 @@ class Twig_Extension_DTwigManager extends Twig_Extension
     {
         $language = $this->registry->get('language');
 
-        if($file) {
+        if ($file) {
             $language->load($file);
         }
 
@@ -97,7 +98,7 @@ class Twig_Extension_DTwigManager extends Twig_Extension
     {
         $config = $this->registry->get('config');
 
-        if($file) {
+        if ($file) {
             $config->load($file);
         }
 
@@ -109,11 +110,12 @@ class Twig_Extension_DTwigManager extends Twig_Extension
      *
      * @return bool
      */
-    public function canAccessFunction($value) {
+    public function canAccessFunction($value)
+    {
         $user = $this->registry->get('user');
 
-        if($user) {
-            return $user->hasPermission('access',$value);
+        if ($user) {
+            return $user->hasPermission('access', $value);
         }
 
         return false;
@@ -124,11 +126,12 @@ class Twig_Extension_DTwigManager extends Twig_Extension
      *
      * @return bool
      */
-    public function canModifyFunction($value) {
+    public function canModifyFunction($value)
+    {
         $user = $this->registry->get('user');
 
-        if($user) {
-            return $user->hasPermission('modify',$value);
+        if ($user) {
+            return $user->hasPermission('modify', $value);
         }
 
         return false;
@@ -138,12 +141,13 @@ class Twig_Extension_DTwigManager extends Twig_Extension
      * @param        $filename
      * @param string $context
      *
-     * @param null   $width
-     * @param null   $height
+     * @param null $width
+     * @param null $height
      *
      * @return string|void
      */
-    public function imageFunction($filename, $context = 'product', $width = null, $height = null) {
+    public function imageFunction($filename, $context = 'product', $width = null, $height = null)
+    {
         if (!is_file(DIR_IMAGE . $filename)) {
             return;
         }
@@ -151,12 +155,12 @@ class Twig_Extension_DTwigManager extends Twig_Extension
         $request = $this->registry->get('request');
         $config = $this->registry->get('config');
 
-        if(!$width) {
-            $width = $config->get('config_image_'. $context .'_width');
+        if (!$width) {
+            $width = $config->get('config_image_' . $context . '_width');
         }
 
-        if(!$height) {
-            $height = $config->get('config_image_'. $context .'_height');
+        if (!$height) {
+            $height = $config->get('config_image_' . $context . '_height');
         }
 
         $extension = pathinfo($filename, PATHINFO_EXTENSION);
@@ -200,14 +204,15 @@ class Twig_Extension_DTwigManager extends Twig_Extension
      *
      * @return string
      */
-    public function assetFunction($path) {
-        if(!$this->is_admin) {
-            if(file_exists(DIR_TEMPLATE . $this->registry->get('config')->get('config_template') . '/' . $path)) {
+    public function assetFunction($path)
+    {
+        if (!$this->is_admin) {
+            if (file_exists(DIR_TEMPLATE . $this->registry->get('config')->get('config_template') . '/' . $path)) {
                 return 'catalog/view/theme/' . $this->registry->get('config')->get('config_template') . '/' . $path;
-            } else if(file_exists(DIR_TEMPLATE . 'default/' . $path)) {
+            } else if (file_exists(DIR_TEMPLATE . 'default/' . $path)) {
                 return 'catalog/view/theme/default/' . $path;
             }
-        } else if(file_exists(DIR_TEMPLATE . '../' . $path)) {
+        } else if (file_exists(DIR_TEMPLATE . '../' . $path)) {
             return 'admin/view/' . $path;
         }
 
@@ -219,7 +224,8 @@ class Twig_Extension_DTwigManager extends Twig_Extension
      *
      * @return mixed
      */
-    public function loadFunction($file) {
+    public function loadFunction($file)
+    {
         $loader = $this->registry->get('load');
 
         return $loader->controller($file);
@@ -227,9 +233,9 @@ class Twig_Extension_DTwigManager extends Twig_Extension
 
     /**
      * @param       $total
-     * @param null  $route
+     * @param null $route
      * @param array $args
-     * @param null  $template
+     * @param null $template
      *
      * @return string
      */
@@ -248,7 +254,7 @@ class Twig_Extension_DTwigManager extends Twig_Extension
 
         $pagination->url = $this->linkFunction($route, $args, $secure);
 
-        if($template) {
+        if ($template) {
             $loader = $this->registry->get('load');
 
             return $loader->view($template, get_object_vars($pagination));
@@ -258,30 +264,35 @@ class Twig_Extension_DTwigManager extends Twig_Extension
     }
 
 
-    public function contentFunction($view){
-        return file_get_contents($this->templateFunction($view));
+    public function contentFunction($view, $extension_file = 'twig')
+    {
+        return file_get_contents(DIR_TEMPLATE . $this->templateFunction($view, $extension_file));
     }
 
-    public function templateFunction($view){
-        $config = $this->registry->get('config');
-        if ($config->get('config_theme') == 'default') {
-            $theme = $config->get('theme_default_directory');
+    public function templateFunction($view, $extension_file = 'twig')
+    {
+        if (!$this->is_admin) {
+            $config = $this->registry->get('config');
+            if ($config->get('config_theme') == 'default') {
+                $theme = $config->get('theme_default_directory');
+            } else {
+                $theme = $config->get('config_theme');
+            }
+
+            if (!$theme) {
+                $theme = $config->get('config_template');
+            }
+
+            if (is_file(DIR_TEMPLATE . $theme . '/template/' . $view . '.' . $extension_file)) {
+                $view = $theme . '/template/' . $view . '.' . $extension_file;
+            } elseif (is_file(DIR_TEMPLATE . 'default/template/' . $view . '.' . $extension_file)) {
+                $view = 'default/template/' . $view . '.' . $extension_file;
+            } else {
+                $view = 'default/template/partial/d_empty.twig';
+            }
         } else {
-            $theme = $config->get('config_theme');
+            $view .= $extension_file;
         }
-
-        if(!$theme){
-            $theme = $config->get('config_template');
-        }
-
-        if (is_file(DIR_TEMPLATE . $theme . '/template/' . $view . '.twig')) {
-            $view = $theme . '/template/' . $view . '.twig';
-        } elseif (is_file(DIR_TEMPLATE . 'default/template/' . $view . '.twig')) {
-            $view = 'default/template/' . $view . '.twig';
-        } else {
-            $view = 'default/template/partial/d_empty.twig';
-        }
-
         return $view;
     }
 
@@ -305,7 +316,7 @@ class Twig_Extension_DTwigManager extends Twig_Extension
      * @param        $number
      * @param string $currency
      * @param string $value
-     * @param bool   $format
+     * @param bool $format
      *
      * @return mixed
      */
@@ -363,7 +374,7 @@ class Twig_Extension_DTwigManager extends Twig_Extension
     /**
      * @param        $value
      * @param string $end
-     * @param null   $limit
+     * @param null $limit
      *
      * @return string
      */
@@ -371,17 +382,17 @@ class Twig_Extension_DTwigManager extends Twig_Extension
     {
         $config = $this->registry->get('config');
 
-        if( ! $limit) {
+        if (!$limit) {
             $limit = $config->get('config_product_description_length');
         }
 
         $str = strip_tags(html_entity_decode($value, ENT_QUOTES, 'UTF-8'));
 
-        if(strlen($str) > $limit) {
+        if (strlen($str) > $limit) {
             $str = utf8_substr($str, 0, $limit) . $end;
         }
 
-        return  $str;
+        return $str;
     }
 
     /**
@@ -420,16 +431,16 @@ class Twig_Extension_DTwigManager extends Twig_Extension
         $document = $this->registry->get('document');
 
         $globals = array(
-            'document_title' => $document->getTitle(),
+            'document_title'       => $document->getTitle(),
             'document_description' => $document->getDescription(),
-            'document_keywords' => $document->getKeywords(),
-            'document_links' => $document->getLinks(),
-            'document_styles' => $document->getStyles(),
-            'document_scripts' => $document->getScripts(),
-            'route' => isset($this->registry->get('request')->get['route']) ? $this->registry->get('request') : '',
+            'document_keywords'    => $document->getKeywords(),
+            'document_links'       => $document->getLinks(),
+            'document_styles'      => $document->getStyles(),
+            'document_scripts'     => $document->getScripts(),
+            'route'                => isset($this->registry->get('request')->get['route']) ? $this->registry->get('request') : '',
         );
 
-        if($this->is_admin) {
+        if ($this->is_admin) {
             $user = $this->registry->get('user');
             $globals['user'] = $user;
             $globals['is_logged'] = $user->isLogged();
