@@ -48,8 +48,8 @@
     ],
     "changelog": [
         {
-            "version":"2.0.1",
-            "change": "Added support for oc v3.0.3.1"
+            "varsion":"2.0.1",
+            "change": "Added support for OC v3.0.3.1"
         },
         {
             "varsion":"2.0.0",
