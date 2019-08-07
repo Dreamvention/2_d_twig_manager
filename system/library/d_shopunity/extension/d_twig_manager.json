@@ -1,6 +1,6 @@
 {
     "codename": "d_twig_manager",
-    "version": "2.0.7",
+    "version": "2.0.8",
     "name": "Twig Manager",
     "description": "Add twig support to you opencart",
     "author": {
@@ -8,13 +8,7 @@
         "email": "info@dreamvention.com",
         "url": "https://dreamvention.com"
     },
-    "opencart_version": [
-        "3.0.0.0",
-        "3.0.1.1",
-        "3.0.1.2",
-        "3.0.2.0",
-        "3.0.3.1"
-    ],
+    "opencart_version": "3-4",
     "type": "library",
     "license": {
         "type": "free",
@@ -40,6 +34,10 @@
         "system/library/template/Twig/Extension/DTwigManager.php"
     ],
     "changelog": [
+        {
+            "version":"2.0.8",
+            "change": "sem var"
+        },
         {
             "version":"2.0.7",
             "change": "Added support for OC v3.0.3.1"

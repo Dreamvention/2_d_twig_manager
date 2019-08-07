@@ -1,6 +1,6 @@
 {
     "codename": "d_twig_manager_admin",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "name": "Twig Manager Admin",
     "description": "Add twig support to you opencart and manage your twig template files.",
     "index": "extension/module/d_twig_manager",
@@ -9,13 +9,7 @@
         "email": "info@dreamvention.com",
         "url": "https://dreamvention.com"
     },
-    "opencart_version": [
-        "3.0.0.0",
-        "3.0.1.1",
-        "3.0.1.2",
-        "3.0.2.0",
-        "3.0.3.1"
-    ],
+    "opencart_version": "3-4",
     "type": "module",
     "license": {
         "type": "free",
@@ -47,6 +41,10 @@
         "admin/view/template/extension/module/d_twig_manager/theme_history.twig"
     ],
     "changelog": [
+        {
+            "varsion":"2.0.2",
+            "change": "sem var"
+        },
         {
             "varsion":"2.0.1",
             "change": "added support for OC v3.0.3.1"
