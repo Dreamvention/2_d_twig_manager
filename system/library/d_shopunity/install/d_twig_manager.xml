@@ -64,7 +64,7 @@
         </operation>
 
         <operation error="skip" info="">
-            <search><![CDATA[public function set($key, $value) {]]></search>
+            <search><![CDATA[public function render($filename, $code = '') {]]></search>
             <add position="before"><![CDATA[
             //d_twig_manager.xml >= 3.0.3.5 
             public function __construct($registry) {
