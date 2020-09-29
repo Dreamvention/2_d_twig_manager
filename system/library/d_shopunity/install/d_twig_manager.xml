@@ -3,7 +3,7 @@
     <name>d_twig_manager</name>
     <code>d_twig_manager</code>
     <description>Adds support for twig templating engine</description>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
     <author>Dreamvention</author>
     <link>http://dreamvention.com</link>
     <file path="system/engine/loader.php">
@@ -59,6 +59,27 @@
             //d_twig_manager.xml
             if (file_exists(DIR_SYSTEM . 'library/template/Twig/Extension/DTwigManager.php')) {
                 $this->twig->addExtension(new \Twig_Extension_DTwigManager($this->registry));
+            }
+            ]]></add>
+        </operation>
+
+        <operation error="skip" info="">
+            <search><![CDATA[public function set($key, $value) {]]></search>
+            <add position="before"><![CDATA[
+            //d_twig_manager.xml >= 3.0.3.5 
+            public function __construct($registry) {
+                $this->registry = $registry;
+            }
+            ]]></add>
+        </operation>
+
+        <operation error="skip" info="">
+            <search><![CDATA[$twig = new \Twig\Environment($loader, $config);]]></search>
+            <add position="after"><![CDATA[
+            //d_twig_manager.xml >= 3.0.3.5 
+            if (file_exists(DIR_SYSTEM . 'library/template/Twig/Extension/DTwigManager.php')) {
+                require_once(DIR_SYSTEM . 'library/template/Twig/Extension/DTwigManager.php');
+                $twig->addExtension(new \Twig_Extension_DTwigManager($this->registry));
             }
             ]]></add>
         </operation>
