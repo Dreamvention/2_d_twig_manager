@@ -121,9 +121,6 @@ class ModelExtensionModuleDTwigManager extends Model {
             $this->installDatabase();
 
             $this->model_extension_d_opencart_patch_modification->refreshCache();
-
-            $this->load->model('extension/d_opencart_patch/url');
-            $this->response->redirect($this->model_extension_d_opencart_patch_url->link($this->request->get['route']));
         }
 
         return true;
